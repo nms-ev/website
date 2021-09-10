@@ -1,6 +1,6 @@
 {
-  "name": "~TODO~",
-  "version": "0.0.1",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
@@ -18,7 +18,6 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
-  "type": "module",
   "dependencies": {
     "randomcolor": "^0.6.2",
     "tachyons": "^4.12.0"
