@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-  <title>[uff] united fun fighters</title>
+  <title>nms e.V.</title>
 </svelte:head>
 
 <slot />
