@@ -6,7 +6,7 @@ const config = {
   plugins: [
     purgecss({
       content: ['./**/**/*.html', './**/**/*.svelte'],
-      whitelistPatterns: [/svelte-/],
+      safelist: ['svelte-'],
     }),
     autoprefixer(),
     cssnano(),
