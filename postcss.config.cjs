@@ -2,14 +2,17 @@ const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const purgecss = require('@fullhuman/postcss-purgecss')
 
+const PROD = process.env.NODE_ENV === 'production'
+
 const config = {
   plugins: [
-    purgecss({
-      content: ['./**/**/*.html', './**/**/*.svelte'],
-      safelist: ['svelte-'],
-    }),
+    PROD &&
+      purgecss({
+        content: ['./**/**/*.html', './**/**/*.svelte'],
+        safelist: [/svelte/],
+      }),
     autoprefixer(),
-    cssnano(),
+    PROD && cssnano(),
   ],
 }
 
