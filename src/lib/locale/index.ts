@@ -1,33 +1,26 @@
-import { init, getLocaleFromNavigator, addMessages, format } from 'svelte-i18n'
+import { init, addMessages, date } from 'svelte-i18n'
+import dayjs from 'dayjs'
 import { derived } from 'svelte/store'
 
 export type LocalizedItem = {
   languages_id: string
 }
 
-export function initialize() {}
 init({
-  fallbackLocale: 'en',
-  initialLocale: getLocaleFromNavigator(),
+  fallbackLocale: 'en-US',
 })
 
-function randomKey(): string {
-  const bytes = 8
-  if (typeof window === 'undefined') {
-    return ''
-  } else {
-    const random = window.crypto.getRandomValues(new Uint8Array(bytes))
-    return [...random].map((x) => x.toString(16).padStart(2, '0')).join('')
-  }
-}
+export const formatDate = derived(date, (date) => (d: string) => date(dayjs(d).toDate(), { dateStyle: 'medium' }))
 
-export function getLocale<T extends LocalizedItem>(translations: T[], item: Exclude<keyof T, 'languages_id'>) {
-  const key = randomKey()
-
+export function getLocale<T extends LocalizedItem>(
+  translations: T[],
+  item: Exclude<keyof T, 'languages_id'>,
+  prefix: string
+) {
+  const key = `${prefix}.${item}`
   for (const translation of translations) {
     const value = translation[item as string] as string
     addMessages(translation.languages_id, { [key]: value })
   }
-
   return key
 }

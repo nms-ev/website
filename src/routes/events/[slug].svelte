@@ -1,25 +1,47 @@
 <script lang="ts" context="module">
-  import { _ } from 'svelte-i18n'
   import type { Load } from '@sveltejs/kit'
 
+  import type { Event } from '$lib/api'
+  import { formatDate, getLocale } from '$lib/locale'
+
   export const load: Load = async ({ fetch, page }) => {
+    const event: Event = await fetch(`/events/${page.params.slug}.json`).then((r) => r.json())
     return {
-      props: { event: await fetch(`/events/${page.params.slug}.json`).then((r) => r.json()) },
+      props: {
+        event,
+        title: getLocale(event.translations, 'title', event.slug),
+        body: getLocale(event.translations, 'body', event.slug),
+      },
     }
   }
 </script>
 
 <script lang="ts">
-  import type { Event } from '$lib/api'
-  import { getLocale } from '$lib/locale'
+  import { _ } from 'svelte-i18n'
+
   import Page from '$lib/components/Page.svelte'
+  import Progress from '$lib/icons/Progress.svelte'
+  import Location from '$lib/icons/Location.svelte'
 
   export let event: Event
-
-  let title = getLocale(event.translations, 'title')
-  let body = getLocale(event.translations, 'body')
+  export let title: string
+  export let body: string
 </script>
 
 <Page title={$_(title)}>
-  {@html $_(body)}
+  <section class="center">
+    <header class="flex">
+      <div class="flex-auto"><Progress /> {$formatDate(event.date)}</div>
+      <div>{event.type}</div>
+      <div class="flex-auto tr">{event.location} <Location /></div>
+    </header>
+
+    {@html $_(body)}
+  </section>
 </Page>
+
+<style>
+  section {
+    max-width: var(--content-width);
+  }
+</style>

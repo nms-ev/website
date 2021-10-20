@@ -17,7 +17,7 @@
   export let events: Event[]
 
   $: localized = events.map((event) => {
-    const title = getLocale(event.translations, 'title')
+    const title = getLocale(event.translations, 'title', event.slug)
     return {
       ...event,
       title,
