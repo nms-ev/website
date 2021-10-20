@@ -17,6 +17,8 @@ jobs:
           node-version: "16"
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
       - name: Remove old data
         uses: appleboy/ssh-action@master
         with:
