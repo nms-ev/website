@@ -25,4 +25,6 @@ export type TAPI = {
   languages: Language
 }
 
-export const API = new Directus<TAPI>(import.meta.env.VITE_API_URL as string)
+const endpoint = import.meta.env.VITE_API_URL as string
+if (!endpoint) throw new Error('VITE_API_URL is not set')
+export const API = new Directus<TAPI>(endpoint)
