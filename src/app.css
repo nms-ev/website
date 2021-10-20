@@ -26,9 +26,16 @@ a {
 p {
   text-align: justify;
   line-height: 1.5;
-  max-width: 30rem;
+  max-width: var(--content-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+svg {
+  height: 0.9em;
+  width: 0.9em;
+  transform: translateY(10%);
+  fill: currentColor;
 }
 
 h1,
