@@ -45,6 +45,11 @@
 <style>
   .wrapper {
     box-shadow: 0 var(--line-size) 0 0 currentColor;
+    transition: var(--transition);
+  }
+  a:hover .wrapper {
+    box-shadow: 0 calc(var(--line-size) * 2) 0 0 currentColor;
+    transform: translateY(-0.5rem);
   }
   @media (max-width: 70rem) {
     .wrapper {

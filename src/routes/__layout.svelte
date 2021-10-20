@@ -25,6 +25,7 @@
   :global(:root) {
     --max-width: 70rem;
     --line-size: 0.075rem;
+    --transition: all ease-in-out 200ms;
   }
 
   main {
