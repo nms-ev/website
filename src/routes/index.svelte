@@ -11,7 +11,7 @@
     <h2 class="ma0 mb2"><ColorText text="[{rand}]" /></h2>
     <h1 class="ma0"><ColorText text="nms" /></h1>
     <br />
-    <p>_ music, art, ...more *</p>
+    <p class="tc">_ music, art, ...more *</p>
   </div>
 </div>
 
