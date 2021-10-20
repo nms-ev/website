@@ -1,7 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@font-face {
+  font-family: 'Mulish';
+  font-display: swap;
+  src: url('/font/Mulish.woff2') format('woff2');
+}
 
 body {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Mulish';
+  font-variation-settings: 'wght' 201;
+  line-height: 1.25;
 }
 
 html,
@@ -9,4 +15,36 @@ body,
 #svelte {
   height: 100%;
   width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+p {
+  text-align: justify;
+  line-height: 1.5;
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 82%;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 4rem;
 }
