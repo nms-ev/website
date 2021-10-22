@@ -23,7 +23,7 @@
 </svelte:head>
 
 <Nav />
-<main class="h-100 center">
+<main class="center">
   <slot />
 </main>
 
@@ -37,6 +37,8 @@
 
   main {
     max-width: var(--max-width);
+    min-height: 100%;
     padding-top: var(--nav-height);
+    padding-bottom: var(--nav-height);
   }
 </style>
