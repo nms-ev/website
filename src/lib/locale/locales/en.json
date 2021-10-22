@@ -1,0 +1,10 @@
+{
+  "common": {},
+  "events": {
+    "types": {
+      "party": "Party",
+      "flea_market": "Flea market",
+      "vernissage": "Vernissage"
+    }
+  }
+}
