@@ -1,21 +1,21 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import rand from 'randomcolor'
   import { getLocaleFromNavigator, locale } from 'svelte-i18n'
   import dayjs from 'dayjs'
   import customParseFormat from 'dayjs/plugin/customParseFormat.js'
   dayjs.extend(customParseFormat)
 
   import Nav from '$lib/components/Nav.svelte'
+  import { store as bgColor, colorToString } from '$lib/stores/bgColor'
 
   import 'tachyons/css/tachyons.css'
   import '../app.css'
 
   onMount(() => {
     locale.set(getLocaleFromNavigator())
-    const bg = rand({ luminosity: 'bright', alpha: 0.05, format: 'rgba' })
-    window.document.body.style.backgroundColor = bg
   })
+
+  $: if (typeof window !== 'undefined') window.document.body.style.backgroundColor = colorToString($bgColor)
 </script>
 
 <svelte:head>

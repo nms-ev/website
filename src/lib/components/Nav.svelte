@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { store as bgColor, colorToString } from '$lib/stores/bgColor'
+
   import Logo from './Logo.svelte'
 
   const links = [
@@ -6,9 +8,13 @@
     { href: '/events', label: 'events' },
     { href: '/about', label: 'about' },
   ]
+
+  let el: HTMLElement
+
+  $: if (el) el.style.backgroundColor = colorToString($bgColor)
 </script>
 
-<nav class="">
+<nav bind:this={el}>
   <div class="wrapper flex items-center center">
     <div class="logo">
       <a href="/">
@@ -36,6 +42,7 @@
 
   nav {
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
