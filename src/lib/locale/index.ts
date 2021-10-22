@@ -2,6 +2,8 @@ import { init, addMessages, date } from 'svelte-i18n'
 import dayjs from 'dayjs'
 import { derived } from 'svelte/store'
 
+import en from './locales/en.json'
+
 export type LocalizedItem = {
   languages_id: string
 }
@@ -9,6 +11,8 @@ export type LocalizedItem = {
 init({
   fallbackLocale: 'en-US',
 })
+
+addMessages('en-US', en)
 
 export const formatDate = derived(date, (date) => (d: string) => date(dayjs(d).toDate(), { dateStyle: 'medium' }))
 
