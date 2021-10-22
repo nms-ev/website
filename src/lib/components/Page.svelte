@@ -3,11 +3,22 @@
   import Transition from './Transition.svelte'
 
   export let title: string
+  export let full = false
 </script>
 
 <Transition>
-  <h1 class="tc ttu mt6 mb5">
-    <ColorText text={title} />
-  </h1>
-  <slot />
+  <div class:full>
+    <h1 class="tc ttu mt6 mb5">
+      <ColorText text={title} />
+    </h1>
+    <slot />
+  </div>
 </Transition>
+
+<style>
+  @media (max-width: 50rem) {
+    div:not(.full) {
+      padding: 2rem;
+    }
+  }
+</style>
