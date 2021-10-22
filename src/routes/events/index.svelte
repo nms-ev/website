@@ -35,7 +35,7 @@
         </div>
         <div class="tr">
           <div>{event.location}</div>
-          <div>{event.type}</div>
+          <div>{$_(`events.types.${event.type}`)}</div>
         </div>
       </div>
     </a>

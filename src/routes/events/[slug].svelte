@@ -22,6 +22,7 @@
   import Page from '$lib/components/Page.svelte'
   import Progress from '$lib/icons/Progress.svelte'
   import Location from '$lib/icons/Location.svelte'
+  import Type from '$lib/icons/Type.svelte'
 
   export let event: Event
   export let title: string
@@ -32,8 +33,11 @@
   <section class="center">
     <header class="flex">
       <div class="flex-auto"><Progress /> {$formatDate(event.date)}</div>
-      <div>{event.type}</div>
-      <div class="flex-auto tr">{event.location} <Location /></div>
+
+      <div class="flex-auto tr">
+        <div>{event.location} <Location /></div>
+        <div>{$_(`events.types.${event.type}`)} <Type /></div>
+      </div>
     </header>
 
     {@html $_(body)}
@@ -43,5 +47,8 @@
 <style>
   section {
     max-width: var(--content-width);
+  }
+  header {
+    font-variation-settings: 'wght' 500;
   }
 </style>
