@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Logo from './Logo.svelte'
+
   const links = [
     { href: '/', label: 'home' },
     { href: '/events', label: 'events' },
@@ -7,8 +9,14 @@
 </script>
 
 <nav class="">
-  <div class="wrapper pv3 flex justify-end items-center center">
-    <ul class="flex pa0 ma0">
+  <div class="wrapper flex items-center center">
+    <div class="logo">
+      <a href="/">
+        <Logo />
+      </a>
+    </div>
+    <div class="flex-auto" />
+    <ul class="flex pa0 ma0 mv3">
       {#each links as { href, label }, i}
         {#if i !== 0}
           <div class="mh2">—</div>
@@ -53,5 +61,10 @@
     text-transform: uppercase;
     font-variation-settings: 'wght' 500;
     font-size: 0.85em;
+  }
+
+  .logo :global(svg) {
+    height: 32px;
+    width: auto;
   }
 </style>
