@@ -33,12 +33,12 @@
   {#each localized as event}
     <a href={`/events/${event.slug}`}>
       <div class="wrapper pv4 flex justify-between items-end">
-        <div class="mono">
+        <div class="details mono">
           <div><Date /> {event.date}</div>
           <div><Location /> {event.location}</div>
           <div><Type /> {$_(`events.types.${event.type}`)}</div>
         </div>
-        <div class="flex-auto mh4">
+        <div class="flex-auto">
           <h2>{$_(event.title)}</h2>
         </div>
         <div class="icon flex">
@@ -57,6 +57,10 @@
   a:hover .wrapper {
     box-shadow: 0 calc(var(--line-size) * 2) 0 0 currentColor;
     transform: translateY(-0.5rem);
+  }
+
+  .details {
+    width: 12rem;
   }
 
   .icon {
