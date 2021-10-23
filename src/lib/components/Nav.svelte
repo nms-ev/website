@@ -1,23 +1,26 @@
 <script lang="ts">
-  import { store as bgColor, colorToString } from '$lib/stores/bgColor'
-
   import Logo from './Logo.svelte'
   import Clock from './Clock.svelte'
+  import Menu from '$lib/icons/Menu.svelte'
+  import { scale, fade } from 'svelte/transition'
+  import { createMediaQueryStore } from '$lib/stores/mediaQuery'
 
   const links = [
-    { href: '/', label: 'home' },
     { href: '/events', label: 'events' },
+    { href: '/join', label: 'join' },
     { href: '/about', label: 'about' },
+    { href: '/contact', label: 'contact' },
   ]
 
-  let el: HTMLElement
+  let mobile = createMediaQueryStore('(max-width: 30rem)')
+  let open = false
 
-  $: if (el) el.style.backgroundColor = colorToString($bgColor)
+  $: combined = $mobile ? [{ href: '/', label: 'home' }, ...links] : links
 </script>
 
-<nav bind:this={el}>
-  <div class="wrapper flex items-center center">
-    <div class="logo flex-grow">
+<nav class:mobile={$mobile}>
+  <div class="wrapper flex flex-no-wrap items-center center">
+    <div class="logo flex-grow mr3 mv2">
       <a href="/">
         <Logo />
       </a>
@@ -25,16 +28,28 @@
     <div class="time">
       <Clock />
     </div>
-    <ul class="flex flex-grow justify-end pa0 ma0 mv3">
-      {#each links as { href, label }, i}
-        {#if i !== 0}
-          <div class="mh2">—</div>
-        {/if}
-        <li>
-          <a {href}>{label}</a>
-        </li>
-      {/each}
-    </ul>
+    {#if !$mobile || open}
+      <ul
+        class:open
+        class="menu flex flex-grow pa0 ma3 mr0 justify-end"
+        on:click={() => (open = false)}
+        transition:fade={{ duration: 50 }}
+      >
+        {#each combined as { href, label }, i}
+          {#if i !== 0}
+            <div class="mh2">—</div>
+          {/if}
+          <li transition:scale={{}}>
+            <a {href}>{label}</a>
+          </li>
+        {/each}
+      </ul>
+    {/if}
+    <div class="toggle tr">
+      <div on:click={() => (open = true)} class="di pa2">
+        <Menu />
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -50,6 +65,7 @@
     left: 0;
     width: 100%;
     font-size: 0.85em;
+    background-color: var(--bg-color);
   }
 
   .wrapper {
@@ -69,6 +85,7 @@
 
   ul {
     list-style: none;
+    width: min-content;
   }
 
   a {
@@ -88,5 +105,33 @@
     .time {
       display: none;
     }
+  }
+
+  .toggle {
+    display: none;
+    font-size: 2em;
+  }
+
+  .mobile .toggle {
+    display: block;
+  }
+  .mobile .menu {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-size: 1.5rem;
+
+    background: var(--bg-color);
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .mobile .menu:not(.open) {
+    display: none;
   }
 </style>

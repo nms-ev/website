@@ -13,6 +13,7 @@ body {
   font-family: 'Mulish';
   font-variation-settings: 'wght' 300;
   line-height: 1.25;
+  background-color: var(--bg-color);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

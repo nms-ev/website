@@ -14,8 +14,6 @@
   onMount(() => {
     locale.set(getLocaleFromNavigator())
   })
-
-  $: if (typeof window !== 'undefined') window.document.body.style.backgroundColor = colorToString($bgColor)
 </script>
 
 <svelte:head>
