@@ -24,6 +24,7 @@
   import Location from '$lib/icons/Location.svelte'
   import Type from '$lib/icons/Type.svelte'
   import Date from '$lib/icons/Date.svelte'
+  import LastUpdatedFooter from '$lib/components/LastUpdatedFooter.svelte'
 
   export let event: Event
   export let title: string
@@ -53,6 +54,7 @@
     </header>
     {@html $_(body)}
   </section>
+  <LastUpdatedFooter date={event.date_updated || event.date_created} />
 </Page>
 
 <style>

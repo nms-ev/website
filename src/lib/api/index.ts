@@ -16,12 +16,26 @@ export type Event = {
     body: string
   }[]
 }
+export type Page = {
+  id: ID
+  status: string
+  sort: number
+  date_created: string
+  date_updated: string
+  slug: string
+  translations: {
+    languages_id: string
+    title: string
+    body: string
+  }[]
+}
 export type Language = {
   code: string
   name: string
 }
 export type TAPI = {
   events: Event
+  pages: Page
   languages: Language
 }
 

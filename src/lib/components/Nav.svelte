@@ -18,7 +18,7 @@
   $: combined = $mobile ? [{ href: '/', label: 'home' }, ...links] : links
 </script>
 
-<nav class:mobile={$mobile}>
+<nav class:mobile={$mobile} class="f6">
   <div class="wrapper flex flex-no-wrap items-center center">
     <div class="logo flex-grow mr3 mv2">
       <a href="/">
@@ -64,7 +64,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    font-size: 0.85em;
     background-color: var(--bg-color);
   }
 
