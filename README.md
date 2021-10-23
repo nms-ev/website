@@ -19,4 +19,12 @@ Before creating a production version of your app, install an [adapter](https://k
 npm run build
 ```
 
+## Font handling
+
+All fonts are compressed variable fonts in woff2. To generate the right files use the following command:
+
+```bash
+pyftsubset --unicodes="U+0020-007E,U+00A0-00FF,U+0100-017F" --layout-features="" --flavor="woff2" --output-file="Out.woff2" MyOriginalBigFont.ttf
+```
+
 > You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.

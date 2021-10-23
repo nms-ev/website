@@ -1,18 +1,17 @@
 @font-face {
   font-family: 'Mulish';
   font-display: swap;
-  font-weight: 200 900;
   src: url('/font/Mulish.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Inconsolata';
+  font-family: 'FiraCode';
   font-display: swap;
-  src: url('/font/Inconsolata.woff2') format('woff2');
+  src: url('/font/FiraCode.woff2') format('woff2');
 }
 
 body {
   font-family: 'Mulish';
-  font-variation-settings: 'wght' 201;
+  font-variation-settings: 'wght' 300;
   line-height: 1.25;
 
   -webkit-font-smoothing: antialiased;
@@ -75,6 +74,6 @@ hr {
 }
 
 .mono {
-  font-family: 'Inconsolata', monospace;
-  font-variation-settings: 'wght' 450;
+  font-family: 'FiraCode', monospace;
+  font-variation-settings: 'wght' 400;
 }

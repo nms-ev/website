@@ -21,6 +21,7 @@
 <style>
   .wrapper {
     height: calc(100vh - (var(--nav-height) * 2));
+    font-variation-settings: 'wght' 201;
   }
   h1 {
     font-size: max(10vw, 16vh);
