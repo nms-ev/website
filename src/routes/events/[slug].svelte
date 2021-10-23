@@ -2,7 +2,7 @@
   import type { Load } from '@sveltejs/kit'
 
   import type { Event } from '$lib/api'
-  import { formatDate, getLocale } from '$lib/locale'
+  import { formatDate, formatTime, getLocale } from '$lib/locale'
 
   export const load: Load = async ({ fetch, page }) => {
     const event: Event = await fetch(`/events/${page.params.slug}.json`).then((r) => r.json())
@@ -23,6 +23,7 @@
   import Progress from '$lib/icons/Progress.svelte'
   import Location from '$lib/icons/Location.svelte'
   import Type from '$lib/icons/Type.svelte'
+  import Date from '$lib/icons/Date.svelte'
 
   export let event: Event
   export let title: string
@@ -31,15 +32,25 @@
 
 <Page title={$_(title)}>
   <section class="center">
-    <header class="flex">
-      <div class="flex-auto"><Progress /> {$formatDate(event.date)}</div>
+    <header class="flex mono">
+      <div class="flex-auto">
+        <div>
+          <Date />
+          {$formatDate(event.date)}
+        </div>
+        {#if event.time}
+          <div>
+            <Progress />
+            {formatTime(event.time)}
+          </div>
+        {/if}
+      </div>
 
       <div class="flex-auto tr">
         <div>{event.location} <Location /></div>
         <div>{$_(`events.types.${event.type}`)} <Type /></div>
       </div>
     </header>
-
     {@html $_(body)}
   </section>
 </Page>
@@ -47,8 +58,5 @@
 <style>
   section {
     max-width: var(--content-width);
-  }
-  header {
-    font-variation-settings: 'wght' 500;
   }
 </style>

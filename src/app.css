@@ -1,13 +1,24 @@
 @font-face {
   font-family: 'Mulish';
   font-display: swap;
+  font-weight: 200 900;
   src: url('/font/Mulish.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-display: swap;
+  src: url('/font/Inconsolata.woff2') format('woff2');
 }
 
 body {
   font-family: 'Mulish';
   font-variation-settings: 'wght' 201;
   line-height: 1.25;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
 html,
@@ -54,4 +65,16 @@ h1 {
 
 h2 {
   font-size: 4rem;
+}
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  border: none;
+  border-bottom: var(--line-size) solid currentColor;
+}
+
+.mono {
+  font-family: 'Inconsolata', monospace;
+  font-variation-settings: 'wght' 450;
 }

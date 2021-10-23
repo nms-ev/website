@@ -15,6 +15,7 @@ init({
 addMessages('en-US', en)
 
 export const formatDate = derived(date, (date) => (d: string) => date(dayjs(d).toDate(), { dateStyle: 'medium' }))
+export const formatTime = (time: string) => time.substr(0, 5)
 
 export function getLocale<T extends LocalizedItem>(
   translations: T[],

@@ -15,8 +15,8 @@
   import Page from '$lib/components/Page.svelte'
   import Location from '$lib/icons/Location.svelte'
   import Type from '$lib/icons/Type.svelte'
-  import Progress from '$lib/icons/Progress.svelte'
   import ArrowRight from '$lib/icons/ArrowRight.svelte'
+  import Date from '$lib/icons/Date.svelte'
 
   export let events: Event[]
 
@@ -33,8 +33,8 @@
   {#each localized as event}
     <a href={`/events/${event.slug}`}>
       <div class="wrapper pv4 flex justify-between items-end">
-        <div>
-          <div><Progress /> {event.date}</div>
+        <div class="mono">
+          <div><Date /> {event.date}</div>
           <div><Location /> {event.location}</div>
           <div><Type /> {$_(`events.types.${event.type}`)}</div>
         </div>
