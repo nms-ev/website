@@ -6,7 +6,6 @@
   dayjs.extend(customParseFormat)
 
   import Nav from '$lib/components/Nav.svelte'
-  import { store as bgColor, colorToString } from '$lib/stores/bgColor'
 
   import 'tachyons/css/tachyons.css'
   import '../app.css'

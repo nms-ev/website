@@ -2,7 +2,7 @@
   import type { Load } from '@sveltejs/kit'
 
   import type { Page as TPage } from '$lib/api'
-  import { formatDate, getLocale } from '$lib/locale'
+  import { getLocale } from '$lib/locale'
 
   export const load: Load = async ({ fetch, page: p }) => {
     const page: TPage = await fetch(`/pages/${p.params.slug}.json`).then((r) => r.json())
@@ -30,6 +30,8 @@
 </script>
 
 <Page title={$_(title)}>
-  {@html $_(body)}
+  <div class="mobile-padding">
+    {@html $_(body)}
+  </div>
   <LastUpdatedFooter date={page.date_updated || page.date_created} />
 </Page>

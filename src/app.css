@@ -78,3 +78,10 @@ hr {
   font-family: 'FiraCode', monospace;
   font-variation-settings: 'wght' 400;
 }
+
+@media (max-width: 50rem) {
+  .mobile-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

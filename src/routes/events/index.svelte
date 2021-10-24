@@ -29,7 +29,7 @@
   })
 </script>
 
-<Page title="Events" full>
+<Page title="Events">
   {#each localized as event}
     <a href={`/events/${event.slug}`}>
       <div class="wrapper pv4 flex justify-between items-end">

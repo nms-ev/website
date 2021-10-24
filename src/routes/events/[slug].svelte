@@ -32,7 +32,7 @@
 </script>
 
 <Page title={$_(title)}>
-  <section class="center">
+  <section class="center mobile-padding">
     <header class="flex mono">
       <div class="flex-auto">
         <div>
