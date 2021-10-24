@@ -13,8 +13,10 @@ export function rand(): Color {
   return randomColor({ format: 'hslArray', luminosity: 'bright' }) as any
 }
 
-store.subscribe((color) => {
+export function setColor(color: Color) {
   if (typeof window !== 'undefined') {
     window.document.querySelector<HTMLElement>(':root')?.style.setProperty('--bg-color', colorToString(color))
   }
-})
+}
+
+store.subscribe((color) => setColor(color))

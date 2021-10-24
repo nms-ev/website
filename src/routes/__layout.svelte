@@ -6,12 +6,14 @@
   dayjs.extend(customParseFormat)
 
   import Nav from '$lib/components/Nav.svelte'
+  import { setColor, store as bgColor } from '$lib/stores/bgColor'
 
   import 'tachyons/css/tachyons.css'
   import '../app.css'
 
   onMount(() => {
     locale.set(getLocaleFromNavigator())
+    setColor($bgColor)
   })
 </script>
 

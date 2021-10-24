@@ -18,7 +18,7 @@
   $: combined = $mobile ? [{ href: '/', label: 'home' }, ...links] : links
 </script>
 
-<nav class:mobile={$mobile} class="f6">
+<nav class="f6">
   <div class="wrapper flex flex-no-wrap items-center center">
     <div class="logo flex-grow mr3 mv2">
       <a href="/">
@@ -111,26 +111,28 @@
     font-size: 2em;
   }
 
-  .mobile .toggle {
-    display: block;
-  }
-  .mobile .menu {
-    position: fixed;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    font-size: 1.5rem;
+  @media (max-width: 30rem) {
+    .toggle {
+      display: block;
+    }
+    .menu {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      font-size: 1.5rem;
 
-    background: var(--bg-color);
+      background: var(--bg-color);
 
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .mobile .menu:not(.open) {
-    display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .menu:not(.open) {
+      display: none;
+    }
   }
 </style>
