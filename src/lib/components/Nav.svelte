@@ -20,7 +20,7 @@
 
 <nav class="f6">
   <div class="wrapper flex flex-no-wrap items-center center">
-    <div class="logo flex-grow mr3 mv2">
+    <div class="logo flex-grow mr3 mv1">
       <a href="/">
         <Logo />
       </a>
@@ -93,7 +93,7 @@
   }
 
   .logo :global(svg) {
-    height: 2rem;
+    height: 2.5rem;
     width: auto;
   }
 
