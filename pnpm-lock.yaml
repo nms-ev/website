@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@directus/sdk': ^9.0.0-rc.101
+  '@directus/sdk': 9.0.0-rc.100
   '@fullhuman/postcss-purgecss': ^4.0.3
   '@sveltejs/adapter-static': next
   '@sveltejs/kit': next
@@ -27,7 +27,7 @@ dependencies:
   tachyons: 4.12.0
 
 devDependencies:
-  '@directus/sdk': 9.0.0-rc.101
+  '@directus/sdk': 9.0.0-rc.100
   '@fullhuman/postcss-purgecss': 4.0.3_postcss@8.3.11
   '@sveltejs/adapter-static': 1.0.0-next.21
   '@sveltejs/kit': 1.0.0-next.193_svelte@3.44.1
@@ -44,8 +44,8 @@ devDependencies:
 
 packages:
 
-  /@directus/sdk/9.0.0-rc.101:
-    resolution: {integrity: sha512-ewzbTP5hjy8Xi2XMijjykBc1tmfvpbxVEHGocQnQ2KPghfog10DaXPQXetuMM8nIkS3+CDWjdA7KMmbuwqX60w==}
+  /@directus/sdk/9.0.0-rc.100:
+    resolution: {integrity: sha512-MS1txXBD1norGXlyEWA87Mlo642Q8j7qORYrVL8LXi7nXjzI/28dkTYCHjRXbCGT5TG+SL4zkHq67VAle1OgTw==}
     dependencies:
       axios: 0.24.0
     transitivePeerDependencies:

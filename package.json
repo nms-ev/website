@@ -9,7 +9,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@directus/sdk": "^9.0.0-rc.101",
+    "@directus/sdk": "9.0.0-rc.100",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
