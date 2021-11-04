@@ -25,8 +25,6 @@
   export let page: TPage
   export let title: string
   export let body: string
-
-  $: console.debug(title)
 </script>
 
 <Page title={$_(title)}>
