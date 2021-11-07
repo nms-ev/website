@@ -21,7 +21,7 @@
 <nav class="f6">
   <div class="wrapper flex flex-no-wrap items-center center">
     <div class="logo flex-grow mr3 mv1">
-      <a href="/">
+      <a sveltekit:prefetch href="/">
         <Logo />
       </a>
     </div>
@@ -33,16 +33,19 @@
         class:open
         class="menu flex flex-grow pa0 ma3 mr0 justify-end"
         on:click={() => (open = false)}
-        transition:fade={{ duration: 50 }}
+        transition:scale={{ duration: 200 }}
       >
         {#each combined as { href, label }, i}
           {#if i !== 0}
             <div class="mh2">—</div>
           {/if}
-          <li transition:scale={{}}>
-            <a {href}>{label}</a>
+          <li transition:scale={{ start: 0.5, duration: 300 }}>
+            <a sveltekit:prefetch {href}>{label}</a>
           </li>
         {/each}
+        {#if $mobile}
+          <div class="mt5 mono f6">→ close me ←</div>
+        {/if}
       </ul>
     {/if}
     <div class="toggle tr">

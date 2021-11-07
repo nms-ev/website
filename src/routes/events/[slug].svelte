@@ -25,6 +25,7 @@
   import Type from '$lib/icons/Type.svelte'
   import Date from '$lib/icons/Date.svelte'
   import LastUpdatedFooter from '$lib/components/LastUpdatedFooter.svelte'
+  import Back from '$lib/components/Back.svelte'
 
   export let event: Event
   export let title: string
@@ -32,6 +33,7 @@
 </script>
 
 <Page title={$_(title)}>
+  <Back to="/events" />
   <section class="center mobile-padding">
     <header class="flex mono">
       <div class="flex-auto">

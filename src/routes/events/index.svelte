@@ -31,7 +31,7 @@
 
 <Page title="Events">
   {#each localized as event}
-    <a href={`/events/${event.slug}`}>
+    <a sveltekit:prefetch href={`/events/${event.slug}`}>
       <div class="wrapper pv4 flex justify-between items-end">
         <div class="details mono">
           <div><Date /> {event.date}</div>
