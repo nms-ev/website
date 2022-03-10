@@ -11,7 +11,7 @@
   style="enable-background:new 0 0 32 32;"
   xml:space="preserve"
 >
-  <style type="text/css">
+  <style>
     .st0 {
       fill: none;
     }
