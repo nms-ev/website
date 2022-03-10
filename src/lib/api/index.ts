@@ -1,4 +1,5 @@
-import { Directus, ID } from '@directus/sdk'
+import { Directus } from '@directus/sdk'
+import type { ID } from '@directus/sdk'
 
 export type Event = {
   id: ID
@@ -33,10 +34,17 @@ export type Language = {
   code: string
   name: string
 }
+
+export type Name = {
+  status: string
+  name: string
+}
+
 export type TAPI = {
   events: Event
   pages: Page
   languages: Language
+  names: Name
 }
 
 const endpoint = import.meta.env.VITE_API_URL as string

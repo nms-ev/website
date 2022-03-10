@@ -3,6 +3,7 @@
   import dayjs from 'dayjs'
 
   type Clocks = 'unix' | 'digital'
+
   let selected: Clocks = 'unix'
   let value = ''
 

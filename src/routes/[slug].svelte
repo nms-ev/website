@@ -4,8 +4,8 @@
   import type { Page as TPage } from '$lib/api'
   import { getLocale } from '$lib/locale'
 
-  export const load: Load = async ({ fetch, page: p }) => {
-    const page: TPage = await fetch(`/pages/${p.params.slug}.json`).then((r) => r.json())
+  export const load: Load = async ({ fetch, params }) => {
+    const page: TPage = await fetch(`/pages/${params.slug}.json`).then((r) => r.json())
     return {
       props: {
         page,

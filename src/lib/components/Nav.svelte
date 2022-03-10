@@ -2,7 +2,7 @@
   import Logo from './Logo.svelte'
   import Clock from './Clock.svelte'
   import Menu from '$lib/icons/Menu.svelte'
-  import { scale, fade } from 'svelte/transition'
+  import { scale } from 'svelte/transition'
   import { createMediaQueryStore } from '$lib/stores/mediaQuery'
 
   const links = [

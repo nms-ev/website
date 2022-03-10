@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit'
 
 export const get: RequestHandler = async function ({ params }) {
   try {
-    const { data } = await API.items('events').readMany({
+    const { data } = await API.items('events').readByQuery({
       fields: '*.*',
       filter: { slug: params.slug, status: 'published' },
       limit: 1,

@@ -10,10 +10,13 @@
 
   import 'tachyons/css/tachyons.css'
   import '../app.css'
+  import { init as initNames } from '$lib/stores/names'
 
   onMount(() => {
     locale.set(getLocaleFromNavigator())
     setColor($bgColor)
+
+    initNames()
   })
 </script>
 

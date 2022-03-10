@@ -4,8 +4,8 @@
   import type { Event } from '$lib/api'
   import { formatDate, formatTime, getLocale } from '$lib/locale'
 
-  export const load: Load = async ({ fetch, page }) => {
-    const event: Event = await fetch(`/events/${page.params.slug}.json`).then((r) => r.json())
+  export const load: Load = async ({ fetch, params }) => {
+    const event: Event = await fetch(`/events/${params.slug}.json`).then((r) => r.json())
     return {
       props: {
         event,

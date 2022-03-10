@@ -15,7 +15,7 @@ init({
 addMessages('en-US', en)
 
 export const formatDate = derived(date, (date) => (d: string) => date(dayjs(d).toDate(), { dateStyle: 'medium' }))
-export const formatTime = (time: string) => time.substr(0, 5)
+export const formatTime = (time: string) => time.slice(0, 5)
 
 export function getLocale<T extends LocalizedItem>(
   translations: T[],
@@ -24,7 +24,7 @@ export function getLocale<T extends LocalizedItem>(
 ) {
   const key = `${prefix}.${item}`
   for (const translation of translations) {
-    const value = translation[item as string] as string
+    const value = translation[item as keyof LocalizedItem] as string
     addMessages(translation.languages_id, { [key]: value })
   }
   return key

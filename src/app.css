@@ -49,6 +49,10 @@ svg {
   fill: currentColor;
 }
 
+img {
+  height: auto;
+}
+
 h1,
 h2,
 h3,
