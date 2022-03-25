@@ -3,16 +3,18 @@ import dayjs from 'dayjs'
 import { derived } from 'svelte/store'
 
 import en from './locales/en.json'
+import de from './locales/de.json'
 
 export type LocalizedItem = {
   languages_id: string
 }
 
 init({
-  fallbackLocale: 'en-US',
+  fallbackLocale: 'de-DE',
 })
 
-addMessages('en-US', en)
+addMessages('en', en)
+addMessages('de', de)
 
 export const formatDate = derived(date, (date) => (d: string) => date(dayjs(d).toDate(), { dateStyle: 'medium' }))
 export const formatTime = (time: string) => time.slice(0, 5)

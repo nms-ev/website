@@ -64,11 +64,11 @@ h6 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: min(6rem, 12vw);
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: min(4rem, 9vw);
 }
 
 hr {

@@ -3,7 +3,7 @@
   "events": {
     "types": {
       "party": "Party",
-      "market": "Market",
+      "market": "Markt",
       "vernissage": "Vernissage"
     }
   }

@@ -7,9 +7,9 @@
 
   const links = [
     { href: '/events', label: 'events' },
-    { href: '/join', label: 'join' },
-    { href: '/about', label: 'about' },
-    { href: '/contact', label: 'contact' },
+    // { href: '/join', label: 'join' },
+    // { href: '/about', label: 'about' },
+    // { href: '/contact', label: 'contact' },
   ]
 
   let mobile = createMediaQueryStore('(max-width: 30rem)')

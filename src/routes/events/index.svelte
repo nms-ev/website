@@ -38,7 +38,7 @@
           <div><Location /> {event.location}</div>
           <div><Type /> {$_(`events.types.${event.type}`)}</div>
         </div>
-        <div class="flex-auto">
+        <div class="text flex-auto">
           <h2>{$_(event.title)}</h2>
         </div>
         <div class="icon flex">
@@ -65,6 +65,11 @@
 
   .icon {
     font-size: 2rem;
+    width: 2rem;
+  }
+
+  .text {
+    padding: 0 1rem;
   }
   @media (max-width: 70rem) {
     .wrapper {
@@ -88,6 +93,9 @@
     }
     .icon {
       display: none;
+    }
+    .text {
+      padding: 0;
     }
   }
 
