@@ -21,6 +21,7 @@
 
   import LastUpdatedFooter from '$lib/components/LastUpdatedFooter.svelte'
   import Page from '$lib/components/Page.svelte'
+  import RichContent from '$lib/components/RichContent.svelte'
 
   export let page: TPage
   export let title: string
@@ -29,7 +30,7 @@
 
 <Page title={$_(title)}>
   <div class="mobile-padding">
-    {@html $_(body)}
+    <RichContent html={$_(body)} />
   </div>
   <LastUpdatedFooter date={page.date_updated || page.date_created} />
 </Page>

@@ -26,6 +26,7 @@
   import Date from '$lib/icons/Date.svelte'
   import LastUpdatedFooter from '$lib/components/LastUpdatedFooter.svelte'
   import Back from '$lib/components/Back.svelte'
+  import RichContent from '$lib/components/RichContent.svelte'
 
   export let event: Event
   export let title: string
@@ -54,7 +55,7 @@
         <div>{$_(`events.types.${event.type}`)} <Type /></div>
       </div>
     </header>
-    {@html $_(body)}
+    <RichContent html={$_(body)} />
   </section>
   <LastUpdatedFooter date={event.date_updated || event.date_created} />
 </Page>
