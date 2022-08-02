@@ -1,13 +1,9 @@
 <script lang="ts">
-  import sanitize from 'sanitize-html'
-
   export let html: string
-
-  $: sanitized = sanitize(html, { allowedTags: [...sanitize.defaults.allowedTags, 'img'] })
 </script>
 
 <section>
-  {@html sanitized}
+  {@html html}
 </section>
 
 <style>
