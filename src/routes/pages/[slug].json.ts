@@ -1,7 +1,7 @@
 import { API } from '$lib/api'
 import type { RequestHandler } from '@sveltejs/kit'
 
-export const get: RequestHandler = async function ({ params }) {
+export const GET: RequestHandler = async function ({ params }) {
   try {
     const { data } = await API.items('pages').readByQuery({
       fields: '*.*',
