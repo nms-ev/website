@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-  import { _ } from 'svelte-i18n'
   import type { Load } from '@sveltejs/kit'
+  import { _ } from 'svelte-i18n'
 
   export const load: Load = async ({ fetch }) => {
     return {
@@ -11,12 +11,12 @@
 
 <script lang="ts">
   import type { Event } from '$lib/api'
-  import { getLocale } from '$lib/locale'
   import Page from '$lib/components/Page.svelte'
-  import Location from '$lib/icons/Location.svelte'
-  import Type from '$lib/icons/Type.svelte'
   import ArrowRight from '$lib/icons/ArrowRight.svelte'
   import Date from '$lib/icons/Date.svelte'
+  import Location from '$lib/icons/Location.svelte'
+  import Type from '$lib/icons/Type.svelte'
+  import { getLocale } from '$lib/locale'
 
   export let events: Event[]
 
@@ -32,13 +32,13 @@
 <Page title="Events">
   {#each localized as event}
     <a sveltekit:prefetch href={`/events/${event.slug}`}>
-      <div class="wrapper pv4 flex justify-between items-end">
+      <div class="wrapper pv4 flex justify-center items-end">
         <div class="details mono">
           <div><Date /> {event.date}</div>
           <div><Location /> {event.location}</div>
           <div><Type /> {$_(`events.types.${event.type}`)}</div>
         </div>
-        <div class="text flex-auto">
+        <div class="text">
           <h2>{$_(event.title)}</h2>
         </div>
         <div class="icon flex">
@@ -70,6 +70,7 @@
 
   .text {
     padding: 0 1rem;
+    flex: 1;
   }
   @media (max-width: 70rem) {
     .wrapper {

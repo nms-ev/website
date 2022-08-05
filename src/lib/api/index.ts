@@ -1,5 +1,5 @@
-import { Directus } from '@directus/sdk'
-import type { ID } from '@directus/sdk'
+import { VITE_API_URL } from '$env/static/private'
+import type { DeepQueryMany, ID, ManyItems, OneItem, QueryMany, QueryOne } from '@directus/sdk'
 
 export type Event = {
   id: ID
@@ -47,6 +47,32 @@ export type TAPI = {
   names: Name
 }
 
-const endpoint = import.meta.env.VITE_API_URL as string
-if (!endpoint) throw new Error('VITE_API_URL is not set')
-export const API = new Directus<TAPI>(endpoint)
+if (!VITE_API_URL) throw new Error('VITE_API_URL is not set')
+// Wait for https://github.com/directus/sdk/issues/29
+// export const API = new Directus<TAPI>(VITE_API_URL)
+
+function call<T>(url: string): Promise<T> {
+  console.debug('URL', url)
+  return fetch(`${VITE_API_URL}${url}`).then((res) => res.json())
+}
+
+type Query<T> = QueryMany<T> | QueryOne<T> | DeepQueryMany<T>
+function optionsToParams<T>(options: Query<T>): string {
+  const params = []
+  for (const [key, value] of Object.entries(options)) {
+    const v = Array.isArray(value) ? value.join(',') : typeof value === 'object' ? JSON.stringify(value) : value
+    params.push(`${key}=${v}`)
+  }
+  return params.join('&').toString()
+}
+
+export const API = {
+  many<T>(items: string, options: QueryMany<T> = {}): Promise<ManyItems<T>> {
+    const param = optionsToParams(options)
+    return call(`/items/${items}?${param.toString()}`)
+  },
+  one<T>(items: string, id: string, options: QueryOne<T> = {}): Promise<OneItem<T>> {
+    const param = optionsToParams(options)
+    return call(`/items/${items}/${id}?${param.toString()}`)
+  },
+}

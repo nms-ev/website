@@ -1,13 +1,18 @@
-import { API } from '$lib/api'
+import { API, type Page } from '$lib/api'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async function ({ params }) {
   try {
-    const { data } = await API.items('pages').readByQuery({
+    const { data } = await API.many<Page>('pages', {
       fields: '*.*',
       filter: { slug: params.slug, status: 'published' },
       limit: 1,
     })
+    // const { data } = await API.items('pages').readByQuery({
+    //   fields: '*.*',
+    //   filter: { slug: params.slug, status: 'published' },
+    //   limit: 1,
+    // })
     if (!data || !data.length) throw new Error('Page not found')
     return { body: data[0] as any }
   } catch {
