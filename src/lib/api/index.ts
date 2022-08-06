@@ -51,7 +51,7 @@ if (!VITE_API_URL) throw new Error('VITE_API_URL is not set')
 // Wait for https://github.com/directus/sdk/issues/29
 // export const API = new Directus<TAPI>(VITE_API_URL)
 
-function call<T>(url: string): Promise<T> {
+async function call<T>(url: string): Promise<T> {
   console.debug('URL', url)
   return fetch(`${VITE_API_URL}${url}`).then((res) => res.json())
 }

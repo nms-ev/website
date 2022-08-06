@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { getLocaleFromNavigator, locale } from 'svelte-i18n'
   import dayjs from 'dayjs'
   import customParseFormat from 'dayjs/plugin/customParseFormat.js'
+  import { onMount } from 'svelte'
+  import { getLocaleFromNavigator, locale } from 'svelte-i18n'
   dayjs.extend(customParseFormat)
 
   import Nav from '$lib/components/Nav.svelte'
   import { setColor, store as bgColor } from '$lib/stores/bgColor'
-
+  import { init as initNames } from '$lib/stores/names'
   import 'tachyons/css/tachyons.css'
   import '../app.css'
-  import { init as initNames } from '$lib/stores/names'
 
   onMount(() => {
     locale.set(getLocaleFromNavigator())
