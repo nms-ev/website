@@ -48,6 +48,7 @@
     </a>
   {/each}
 </Page>
+<div class="mb7" />
 
 <style>
   .wrapper {

@@ -10,7 +10,7 @@
 
 <Content>
   <hr />
-  <div class="flex">
+  <div class="flex mb3">
     <nav class="left">
       <ul class="pa0 ma0 list">
         {#each left as { href, icon }}

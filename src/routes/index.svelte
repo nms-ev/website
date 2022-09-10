@@ -17,7 +17,7 @@
 
 <style>
   .wrapper {
-    height: calc(100vh - (var(--nav-height) * 2));
+    height: calc(100vh - var(--nav-height));
     font-variation-settings: 'wght' 201;
   }
   h1 {

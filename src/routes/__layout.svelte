@@ -30,8 +30,8 @@
   <Content>
     <slot />
   </Content>
-  <Footer />
 </main>
+<Footer />
 
 <style>
   :global(:root) {
@@ -43,6 +43,5 @@
 
   main {
     padding-top: var(--nav-height);
-    padding-bottom: var(--nav-height);
   }
 </style>
