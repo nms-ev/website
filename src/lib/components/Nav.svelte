@@ -1,9 +1,10 @@
 <script lang="ts">
-  import Logo from './Logo.svelte'
-  import Clock from './Clock.svelte'
   import Menu from '$lib/icons/Menu.svelte'
-  import { scale } from 'svelte/transition'
   import { createMediaQueryStore } from '$lib/stores/mediaQuery'
+  import { scale } from 'svelte/transition'
+  import Clock from './Clock.svelte'
+  import Content from './Content.svelte'
+  import Logo from './Logo.svelte'
 
   const links = [
     { href: '/events', label: 'events' },
@@ -19,41 +20,43 @@
 </script>
 
 <nav class="f6">
-  <div class="wrapper flex flex-no-wrap items-center center">
-    <div class="logo flex-grow mr3 mv1">
-      <a sveltekit:prefetch href="/">
-        <Logo />
-      </a>
-    </div>
-    <div class="time">
-      <Clock />
-    </div>
-    {#if !$mobile || open}
-      <ul
-        class:open
-        class="menu flex flex-grow pa0 ma3 mr0 justify-end"
-        on:click={() => (open = false)}
-        transition:scale={{ duration: 200 }}
-      >
-        {#each combined as { href, label }, i}
-          {#if i !== 0}
-            <div class="mh2">—</div>
+  <Content>
+    <div class="wrapper flex flex-no-wrap items-center center">
+      <div class="logo flex-grow mr3 mv1">
+        <a sveltekit:prefetch href="/">
+          <Logo />
+        </a>
+      </div>
+      <div class="time">
+        <Clock />
+      </div>
+      {#if !$mobile || open}
+        <ul
+          class:open
+          class="menu flex flex-grow pa0 ma3 mr0 justify-end"
+          on:click={() => (open = false)}
+          transition:scale={{ duration: 200 }}
+        >
+          {#each combined as { href, label }, i}
+            {#if i !== 0}
+              <div class="mh2">—</div>
+            {/if}
+            <li transition:scale={{ start: 0.5, duration: 300 }}>
+              <a sveltekit:prefetch {href}>{label}</a>
+            </li>
+          {/each}
+          {#if $mobile}
+            <div class="mt5 mono f6">→ close me ←</div>
           {/if}
-          <li transition:scale={{ start: 0.5, duration: 300 }}>
-            <a sveltekit:prefetch {href}>{label}</a>
-          </li>
-        {/each}
-        {#if $mobile}
-          <div class="mt5 mono f6">→ close me ←</div>
-        {/if}
-      </ul>
-    {/if}
-    <div class="toggle tr">
-      <div on:click={() => (open = true)} class="di pa2">
-        <Menu />
+        </ul>
+      {/if}
+      <div class="toggle tr">
+        <div on:click={() => (open = true)} class="di pa2">
+          <Menu />
+        </div>
       </div>
     </div>
-  </div>
+  </Content>
 </nav>
 
 <style>
@@ -72,7 +75,6 @@
 
   .wrapper {
     box-shadow: 0 var(--line-size) 0 0 currentColor;
-    max-width: var(--max-width);
     --nav-horizontal-padding: 2rem;
   }
   .wrapper > * {

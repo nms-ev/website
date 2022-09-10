@@ -5,6 +5,8 @@
   import { getLocaleFromNavigator, locale } from 'svelte-i18n'
   dayjs.extend(customParseFormat)
 
+  import Content from '$lib/components/Content.svelte'
+  import Footer from '$lib/components/Footer.svelte'
   import Nav from '$lib/components/Nav.svelte'
   import { setColor, store as bgColor } from '$lib/stores/bgColor'
   import { init as initNames } from '$lib/stores/names'
@@ -24,8 +26,11 @@
 </svelte:head>
 
 <Nav />
-<main class="center">
-  <slot />
+<main>
+  <Content>
+    <slot />
+  </Content>
+  <Footer />
 </main>
 
 <style>
@@ -37,8 +42,6 @@
   }
 
   main {
-    max-width: var(--max-width);
-    min-height: 100%;
     padding-top: var(--nav-height);
     padding-bottom: var(--nav-height);
   }
