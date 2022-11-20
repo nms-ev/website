@@ -1,4 +1,4 @@
-import type { Name } from '$lib/api'
+import { SDK } from '$lib/sdk'
 import { get, writable } from 'svelte/store'
 
 export const names = writable<string[] | null>(null)
@@ -11,8 +11,10 @@ function setRandom() {
 }
 
 export async function init() {
-  const data: Name[] = await fetch('/names.json').then((r) => r.json())
-  names.set(data.map(({ name }) => name))
-  setRandom()
-  setInterval(setRandom, 3000)
+  const response = await SDK.items('names').readByQuery()
+  if (response.data) {
+    names.set(response.data.map((n) => n.name))
+    setRandom()
+    setInterval(setRandom, 3000)
+  }
 }

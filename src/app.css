@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'Mulish';
   font-display: swap;
@@ -21,6 +25,8 @@ body {
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
+/* GENERAL */
+
 html,
 body,
 #svelte {
@@ -32,25 +38,21 @@ a {
   color: inherit;
   text-decoration: inherit;
   cursor: pointer;
+  font-variation-settings: 'wght' 500;
 }
 
 p {
   text-align: justify;
   line-height: 1.5;
-  max-width: var(--content-width);
   margin-left: auto;
   margin-right: auto;
-}
-
-svg {
-  height: 0.9em;
-  width: 0.9em;
-  transform: translateY(10%);
-  fill: currentColor;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 img {
   height: auto;
+  width: 100%;
 }
 
 h1,
@@ -79,14 +81,13 @@ hr {
   border-bottom: var(--line-size) solid currentColor;
 }
 
+/* UTILITY */
+
+.bg {
+  background-color: var(--bg-color);
+}
+
 .mono {
   font-family: 'FiraCode', monospace;
   font-variation-settings: 'wght' 400;
-}
-
-@media (max-width: 50rem) {
-  .mobile-padding {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }

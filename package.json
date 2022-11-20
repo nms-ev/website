@@ -9,22 +9,25 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@sveltejs/adapter-cloudflare": "^1.0.0-next.31",
-    "@sveltejs/adapter-static": "1.0.0-next.39",
-    "@sveltejs/kit": "^1.0.0-next.403",
+    "@sveltejs/adapter-cloudflare": "^1.0.0-next.40",
+    "@sveltejs/adapter-node": "^1.0.0-next.100",
+    "@sveltejs/adapter-static": "^1.0.0-next.48",
+    "@sveltejs/kit": "^1.0.0-next.553",
     "@types/randomcolor": "^0.5.6",
-    "svelte": "^3.49.0",
-    "svelte-check": "^2.8.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "svelte": "^3.53.1",
+    "svelte-check": "^2.9.2",
     "svelte-preprocess": "^4.10.7",
-    "tslib": "^2.4.0",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.4"
+    "tailwindcss": "^3.2.4",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4"
   },
   "dependencies": {
-    "@directus/sdk": "^9.14.2",
-    "dayjs": "^1.11.4",
+    "@directus/sdk": "^10.3.0",
+    "dayjs": "^1.11.6",
     "randomcolor": "^0.6.2",
-    "svelte-i18n": "^3.4.0",
-    "tachyons": "^4.12.0"
+    "svelte-i18n": "^3.4.1"
   }
 }

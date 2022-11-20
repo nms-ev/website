@@ -1,5 +1,8 @@
 {
   "common": {},
+  "footer": {
+    "game": "Das Spiel verloren"
+  },
   "events": {
     "types": {
       "party": "Party",

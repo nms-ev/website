@@ -1,54 +1,34 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
-  import { _ } from 'svelte-i18n'
-
-  export const load: Load = async ({ fetch }) => {
-    return {
-      props: { events: await fetch('/events.json').then((r) => r.json()) },
-    }
-  }
-</script>
-
 <script lang="ts">
-  import type { Event } from '$lib/api'
+  import { _ } from 'svelte-i18n'
+  import type { PageData } from './$types'
+
+  import Icon from '$lib/components/Icon.svelte'
   import Page from '$lib/components/Page.svelte'
-  import ArrowRight from '$lib/icons/ArrowRight.svelte'
-  import Date from '$lib/icons/Date.svelte'
-  import Location from '$lib/icons/Location.svelte'
-  import Type from '$lib/icons/Type.svelte'
-  import { getLocale } from '$lib/locale'
 
-  export let events: Event[]
-
-  $: localized = events.map((event) => {
-    const title = getLocale(event.translations, 'title', event.slug)
-    return {
-      ...event,
-      title,
-    }
-  })
+  export let data: PageData
 </script>
 
 <Page title="Events">
-  {#each localized as event}
-    <a sveltekit:prefetch href={`/events/${event.slug}`}>
-      <div class="wrapper pv4 flex justify-center items-end">
+  <div class="mt-32" />
+  {#each data.events as { event, keys }}
+    <a href={`/events/${event.slug}`}>
+      <div class="wrapper py-8 flex justify-center items-end">
         <div class="details mono">
-          <div><Date /> {event.date}</div>
-          <div><Location /> {event.location}</div>
-          <div><Type /> {$_(`events.types.${event.type}`)}</div>
+          <div><Icon inline name="date" /> {event.date}</div>
+          <div><Icon inline name="location" /> {event.location}</div>
+          <div><Icon inline name="type" /> {$_(`events.types.${event.type}`)}</div>
         </div>
         <div class="text">
-          <h2>{$_(event.title)}</h2>
+          <h2>{$_(keys.title)}</h2>
         </div>
         <div class="icon flex">
-          <ArrowRight />
+          <Icon name="arrow_right" />
         </div>
       </div>
     </a>
   {/each}
+  <div class="mb-64" />
 </Page>
-<div class="mb7" />
 
 <style>
   .wrapper {
@@ -61,7 +41,7 @@
   }
 
   .details {
-    width: 12rem;
+    width: 16rem;
   }
 
   .icon {

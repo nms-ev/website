@@ -1,5 +1,8 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
+
+  import Click from './Click.svelte'
+
   export let to: string | null = null
 
   $: go = () => {
@@ -8,15 +11,6 @@
   }
 </script>
 
-<div class="mono pointer pa1" on:click={go}>← back</div>
-
-<style>
-  div {
-    position: fixed;
-    top: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    background-color: var(--bg-color);
-  }
-</style>
+<div class="bg fixed z-10 top-20 left-1/2 -translate-x-1/2">
+  <Click class="mono p-2" on:click={go}>← back</Click>
+</div>

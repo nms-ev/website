@@ -1,5 +1,6 @@
 <script lang="ts">
   import ColorText from './ColorText.svelte'
+  import Content from './Content.svelte'
   import Transition from './Transition.svelte'
 
   export let title: string
@@ -7,9 +8,11 @@
 
 <Transition>
   <div>
-    <h1 class="tc ttu mt6 mb5 mobile-padding">
-      <ColorText text={title} />
-    </h1>
+    <Content>
+      <h1 class="text-center uppercase mt-32 mb-16">
+        <ColorText text={title} />
+      </h1>
+    </Content>
     <slot />
   </div>
 </Transition>

@@ -1,12 +1,13 @@
-<div {...$$restProps}>
+<script lang="ts">
+  export let reader: boolean = false
+</script>
+
+<div class:reader class="px-4 mx-auto w-fit">
   <slot />
 </div>
 
 <style>
-  div {
-    max-width: var(--max-width);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  div.reader {
+    max-width: var(--content-width);
   }
 </style>

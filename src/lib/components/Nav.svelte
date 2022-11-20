@@ -1,10 +1,11 @@
 <script lang="ts">
-  import Menu from '$lib/icons/Menu.svelte'
-  import { createMediaQueryStore } from '$lib/stores/mediaQuery'
+  import type { ComponentProps } from 'svelte'
   import { scale } from 'svelte/transition'
-  import Clock from './Clock.svelte'
-  import Content from './Content.svelte'
-  import Logo from './Logo.svelte'
+
+  import { createMediaQueryStore } from '$lib/stores/mediaQuery'
+  import Click from './Click.svelte'
+  import Container from './Container.svelte'
+  import Icon from './Icon.svelte'
 
   const links = [
     { href: '/events', label: 'events' },
@@ -13,50 +14,81 @@
     // { href: '/contact', label: 'contact' },
   ]
 
-  let mobile = createMediaQueryStore('(max-width: 30rem)')
+  const socials: { href: string; icon: ComponentProps<Icon>['name'] }[] = [
+    { icon: 'instagram', href: 'https://instagram.com/nms_ev' },
+    { icon: 'telegram', href: 'https://t.me/nms_ev' },
+    { icon: 'github', href: 'https://github.com/nms-ev/' },
+  ]
+
+  let mobile = createMediaQueryStore('(max-width: 640px)')
   let open = false
 
+  const close = () => (open = false)
+
   $: combined = $mobile ? [{ href: '/', label: 'home' }, ...links] : links
+
+  const animation = {
+    menu: 150,
+    link: 150,
+    linkDelay: 25,
+  }
 </script>
 
-<nav class="f6">
-  <Content>
-    <div class="wrapper flex flex-no-wrap items-center center">
-      <div class="logo flex-grow mr3 mv1">
-        <a sveltekit:prefetch href="/">
-          <Logo />
+<nav class="fixed z-20 top-0 left-0 w-screen">
+  <Container>
+    <div class="bg wrapper text-sm px-4 xl:px-0 flex flex-nowrap items-center mx-auto pt-2 pb-1">
+      <!-- Logo -->
+      <div class="flex-1 mr-2 text-4xl">
+        <a href="/">
+          <Icon name="logo" />
         </a>
       </div>
-      <div class="time">
-        <Clock />
+
+      <!-- Socials -->
+      <div class="flex ml-4">
+        {#each socials as { href, icon }}
+          <a class="text-xl ml-2" {href} target="_blank" rel="noopener noreferrer">
+            <Icon name={icon} />
+          </a>
+        {/each}
       </div>
+
+      <!-- Links -->
       {#if !$mobile || open}
         <ul
           class:open
-          class="menu flex flex-grow pa0 ma3 mr0 justify-end"
-          on:click={() => (open = false)}
-          transition:scale={{ duration: 200 }}
+          class="bg flex-1 flex justify-end"
+          transition:scale={{ duration: animation.menu }}
+          on:click={close}
+          on:keydown={close}
         >
           {#each combined as { href, label }, i}
             {#if i !== 0}
-              <div class="mh2">—</div>
+              <div class="hidden sm:block mx-2">—</div>
             {/if}
-            <li transition:scale={{ start: 0.5, duration: 300 }}>
-              <a sveltekit:prefetch {href}>{label}</a>
+            <li transition:scale={{ duration: animation.link, delay: animation.menu + i * animation.linkDelay }}>
+              <a class="uppercase" {href}>{label}</a>
             </li>
           {/each}
-          {#if $mobile}
-            <div class="mt5 mono f6">→ close me ←</div>
-          {/if}
+          <li
+            transition:scale={{
+              duration: animation.link,
+              delay: animation.menu + combined.length * animation.linkDelay,
+            }}
+          >
+            <Click class="mono text-base sm:hidden">→ close me ←</Click>
+          </li>
         </ul>
       {/if}
-      <div class="toggle tr">
-        <div on:click={() => (open = true)} class="di pa2">
-          <Menu />
-        </div>
+
+      <!-- Toggle for mobile -->
+      <div class="toggle text-right text-2xl flex justify-center sm:hidden">
+        <Click on:click={() => (open = true)} class="p-1">
+          <Icon name="menu" />
+        </Click>
       </div>
     </div>
-  </Content>
+  </Container>
 </nav>
 
 <style>
@@ -64,63 +96,13 @@
     --nav-height: 3rem;
   }
 
-  nav {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-color);
-  }
-
   .wrapper {
     box-shadow: 0 var(--line-size) 0 0 currentColor;
-    --nav-horizontal-padding: 2rem;
-  }
-  .wrapper > * {
-    flex: 1 0 0;
-  }
-  @media (max-width: 70rem) {
-    .wrapper {
-      padding-left: var(--nav-horizontal-padding);
-      padding-right: var(--nav-horizontal-padding);
-    }
+    --nav-horizontal-padding: 1rem;
   }
 
-  ul {
-    list-style: none;
-    width: min-content;
-  }
-
-  a {
-    text-transform: uppercase;
-    font-variation-settings: 'wght' 500;
-  }
-
-  .logo :global(svg) {
-    height: 2.5rem;
-    width: auto;
-  }
-
-  .time {
-    flex: 0 1 auto;
-  }
-  @media (max-width: 50rem) {
-    .time {
-      display: none;
-    }
-  }
-
-  .toggle {
-    display: none;
-    font-size: 2em;
-  }
-
-  @media (max-width: 30rem) {
-    .toggle {
-      display: block;
-    }
-    .menu {
+  @media (max-width: 640px) {
+    ul {
       position: fixed;
       z-index: 20;
       top: 0;
@@ -128,16 +110,17 @@
       width: 100vw;
       height: 100vh;
       margin: 0;
-      font-size: 1.5rem;
-
-      background: var(--bg-color);
+      font-size: 2rem;
 
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
-    .menu:not(.open) {
+    ul:not(.open) {
       display: none;
+    }
+    ul li {
+      margin-bottom: 0.75em;
     }
   }
 </style>

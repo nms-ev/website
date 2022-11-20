@@ -1,6 +1,7 @@
 <script lang="ts">
   import { store } from '$lib/stores/timestamp'
-  import dayjs from 'dayjs'
+  import { DJS } from '$lib/time'
+  import Click from './Click.svelte'
 
   type Clocks = 'unix' | 'digital'
 
@@ -12,7 +13,7 @@
       value = (($store / 1000) | 0).toString()
       break
     case 'digital':
-      value = dayjs($store).format('HH:mm:ss')
+      value = DJS($store).format('HH:mm:ss')
       break
   }
 
@@ -26,6 +27,6 @@
   }
 </script>
 
-<div class="mono pointer" on:click={change}>
+<Click class="mono" on:click={change}>
   {value}
-</div>
+</Click>

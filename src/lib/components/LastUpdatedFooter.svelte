@@ -4,8 +4,8 @@
   export let date: string
 </script>
 
-<div class="mt4" />
+<div class="mt-8" />
 <hr />
-<p class="mono center f6 tc">
+<p class="mono text-sm text-center">
   Updated: {$formatDate(date)}
 </p>

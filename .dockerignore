@@ -1,0 +1,10 @@
+*
+!src
+!static
+!package.json
+!pnpm-lock.yaml
+!postcss.config.cjs
+!svelte.config.js
+!tailwind.config.cjs
+!tsconfig.json
+!vite.config.ts
