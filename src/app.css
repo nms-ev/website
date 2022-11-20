@@ -4,20 +4,27 @@
 
 @font-face {
   font-family: 'Mulish';
+  src: url('/font/Mulish-Italic-VariableFont_wght.woff2') format('woff2-variations');
   font-display: swap;
+  font-weight: 200 1000;
+  font-stretch: 75% 125%;
   font-style: italic;
-  src: url('/font/Mulish-Italic-VariableFont_wght.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Mulish';
+  src: url('/font/Mulish-VariableFont_wght.woff2') format('woff2-variations');
   font-display: swap;
+  font-weight: 200 1000;
+  font-stretch: 75% 125%;
   font-style: normal;
-  src: url('/font/Mulish-VariableFont_wght.woff2') format('woff2');
 }
 @font-face {
   font-family: 'FiraCode';
+  src: url('/font/FiraCode-VariableFont_wght.woff2') format('woff2-variations');
   font-display: swap;
-  src: url('/font/FiraCode-VariableFont_wght.woff2') format('woff2');
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-style: normal;
 }
 
 body {
