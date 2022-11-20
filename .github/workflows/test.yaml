@@ -12,7 +12,6 @@ jobs:
         with:
           lfs: true
       - run: git lfs checkout
-      - run: ls -hal static/font
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
