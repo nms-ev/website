@@ -5,8 +5,9 @@ RUN npm -g install pnpm
 FROM base as builder
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
-RUN pnpm exec svelte-kit sync
 COPY . .
+RUN pnpm exec svelte-kit sync
+RUN pnpm run check
 RUN pnpm run build
 
 FROM base as runner

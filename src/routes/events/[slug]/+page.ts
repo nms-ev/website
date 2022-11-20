@@ -4,7 +4,7 @@ import { getLocalisationKeys } from '$lib/locale'
 import { SDK } from '$lib/sdk'
 import { error } from '@sveltejs/kit'
 
-export const load: PageLoad = async ({ fetch, params }) => {
+export const load: PageLoad = async ({ params }) => {
   const response = await SDK.items('events').readByQuery({
     limit: 1,
     // @ts-ignore
