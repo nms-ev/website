@@ -12,6 +12,7 @@ jobs:
         with:
           lfs: true
       - run: git lfs pull
+      - run: ls -hal static/font
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -23,4 +24,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          platforms: linux/amd64,linux/arm64
+          # platforms: linux/amd64,linux/arm64
+          tags: test
+      - run: docker run --rm -it test ls -hal build/client/font
