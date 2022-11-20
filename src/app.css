@@ -5,12 +5,19 @@
 @font-face {
   font-family: 'Mulish';
   font-display: swap;
-  src: url('/font/Mulish.woff2') format('woff2');
+  font-style: italic;
+  src: url('/font/Mulish-Italic-VariableFont_wght.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Mulish';
+  font-display: swap;
+  font-style: normal;
+  src: url('/font/Mulish-VariableFont_wght.woff2') format('woff2');
 }
 @font-face {
   font-family: 'FiraCode';
   font-display: swap;
-  src: url('/font/FiraCode.woff2') format('woff2');
+  src: url('/font/FiraCode-VariableFont_wght.woff2') format('woff2');
 }
 
 body {
