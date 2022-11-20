@@ -26,6 +26,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           # platforms: linux/amd64,linux/arm64
-          tags: test
-      - run: docker run --rm test ls -hal build/client/font
+          tags: test/test
+          context: .
+      - run: docker run --rm test/test ls -hal build/client/font
       - run: ls -hal static/font
