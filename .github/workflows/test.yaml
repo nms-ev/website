@@ -28,3 +28,4 @@ jobs:
           # platforms: linux/amd64,linux/arm64
           tags: test
       - run: docker run --rm test ls -hal build/client/font
+      - run: ls -hal static/font
