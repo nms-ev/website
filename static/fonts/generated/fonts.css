@@ -1,0 +1,193 @@
+/* Mulish */
+/*  cyrillic-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/4d36552928031ca803f1183dc7f1674710a5c86f.woff2) format('woff2-variations');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  cyrillic */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/c1e8991661b622da5240e514a7e8f4aca30cf55a.woff2) format('woff2-variations');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  greek-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/1d2f621c3de14dda4f6c747d9db19ec2218def5d.woff2) format('woff2-variations');
+  unicode-range: U+1F00-1FFF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  greek */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/2116a0780c7ced65544beb260eeeac874efb11a3.woff2) format('woff2-variations');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  vietnamese */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/c40c924c5b0157a0034eea019e832bd2b05b7052.woff2) format('woff2-variations');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  latin-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/c2e02879dbe6ae4e3b248676b5327bd026b78c35.woff2) format('woff2-variations');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  latin */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/08284d4f696ab68dc7aa21c9c061c534939a3a0c.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+/*  cyrillic-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/50d850a0cf12564e6748a91e54652eab95fcb0bd.woff2) format('woff2-variations');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  cyrillic */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/cadcc7d367e0b2e639c270c2998ffd81308450af.woff2) format('woff2-variations');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  greek-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/db3c11080e95d21cbb7fca8757b6e8a30beef0fa.woff2) format('woff2-variations');
+  unicode-range: U+1F00-1FFF;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  greek */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/3385a96ddf15842250a3f46cc38c4635c0f3b6c8.woff2) format('woff2-variations');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  vietnamese */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/090747688e0cfa2f8c77f68451f5f9a5326552e5.woff2) format('woff2-variations');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  latin-ext */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/32e249db524d8f7136feeec6bfe0543e922f2ec0.woff2) format('woff2-variations');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+/*  latin */
+@font-face {
+  font-family: 'Mulish';
+  src: url(/fonts/generated/4bb4d252242f3c39fd6e7d5e20c1e053857a6beb.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200 1000;
+}
+
+
+/* FiraCode */
+/*  cyrillic-ext */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/0d8ec55ca09fda0589fa5a2d2db058970fdcf398.woff2) format('woff2-variations');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  cyrillic */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/3f20e502d59581506a0f48209ce44e8eaf5e911d.woff2) format('woff2-variations');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  greek-ext */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/0a9a0161782b9d33373d06d5b97fd4d0e0a63d8e.woff2) format('woff2-variations');
+  unicode-range: U+1F00-1FFF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  greek */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/86dcf36ba52e738c046ba1841ebd271d35cc933f.woff2) format('woff2-variations');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  vietnamese */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/49d45b2ace986f9a01d9d822c6537563493bdde6.woff2) format('woff2-variations');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  latin-ext */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/c7349cd515de37610a809bd101f9939cc287b580.woff2) format('woff2-variations');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+/*  latin */
+@font-face {
+  font-family: 'FiraCode';
+  src: url(/fonts/generated/5bf3e3977b9a70e92903c77d5a3c24559949e2b7.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
