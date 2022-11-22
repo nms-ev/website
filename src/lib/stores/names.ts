@@ -11,7 +11,10 @@ function setRandom() {
 }
 
 export async function init() {
-  const response = await SDK.items('names').readByQuery()
+  const response = await SDK.items('names').readByQuery({
+    filter: { status: 'published' },
+    limit: -1,
+  })
   if (response.data) {
     names.set(response.data.map((n) => n.name))
     setRandom()
