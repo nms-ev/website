@@ -10,7 +10,7 @@ export function colorToString(color: Color, luminosity = 0.92): string {
 }
 
 export function rand(): string {
-  const seed = (Date.now() / 1000 / 5) | 0 // Change every 5 seconds
+  const seed = (Date.now() / 1000 / 1) | 0 // Change every second
   const color = randomColor({ format: 'hslArray', luminosity: 'bright', seed }) as any
   return colorToString(color)
 }
@@ -18,6 +18,15 @@ export function rand(): string {
 export function setColor(color: string) {
   if (browser) {
     window.document.querySelector<HTMLElement>(':root')?.style.setProperty('--bg-color', color)
+    const meta = window.document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+    if (!meta) {
+      const meta = window.document.createElement('meta')
+      meta.name = 'theme-color'
+      meta.content = color
+      window.document.head.appendChild(meta)
+    } else {
+      meta.content = color
+    }
   }
 }
 
