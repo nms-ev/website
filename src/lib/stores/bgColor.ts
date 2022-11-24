@@ -9,17 +9,18 @@ export function colorToString(color: Color, luminosity = 0.92): string {
   return `hsl(${color[0]}, ${color[1]}%, ${color[2] + tmp}%)`
 }
 
-export function rand(): Color {
+export function rand(): string {
   const seed = (Date.now() / 1000 / 5) | 0 // Change every 5 seconds
-  return randomColor({ format: 'hslArray', luminosity: 'bright', seed }) as any
+  const color = randomColor({ format: 'hslArray', luminosity: 'bright', seed }) as any
+  return colorToString(color)
 }
 
-export function setColor(color: Color) {
+export function setColor(color: string) {
   if (browser) {
-    window.document.querySelector<HTMLElement>(':root')?.style.setProperty('--bg-color', colorToString(color))
+    window.document.querySelector<HTMLElement>(':root')?.style.setProperty('--bg-color', color)
   }
 }
 
-export const store = writable<Color>(rand())
+export const color = writable<string>(rand())
 
-store.subscribe((color) => setColor(color))
+color.subscribe((color) => setColor(color))

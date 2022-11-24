@@ -53,16 +53,21 @@ h4,
 h5,
 h6 {
   margin: 0;
-  line-height: 82%;
   font-weight: normal;
 }
 
 h1 {
   font-size: min(6rem, 12vw);
+  line-height: 82%;
 }
 
 h2 {
   font-size: min(4rem, 9vw);
+  line-height: 82%;
+}
+
+h3 {
+  font-size: 2.5rem;
 }
 
 hr {

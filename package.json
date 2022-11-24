@@ -9,8 +9,8 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.100",
-    "@sveltejs/kit": "^1.0.0-next.553",
+    "@sveltejs/adapter-node": "^1.0.0-next.101",
+    "@sveltejs/kit": "^1.0.0-next.560",
     "@types/randomcolor": "^0.5.6",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
@@ -26,6 +26,6 @@
     "@directus/sdk": "^10.3.0",
     "dayjs": "^1.11.6",
     "randomcolor": "^0.6.2",
-    "svelte-i18n": "^3.4.1"
+    "svelte-i18n": "^3.5.2"
   }
 }
