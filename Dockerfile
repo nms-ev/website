@@ -1,6 +1,6 @@
 FROM node:18-alpine as base
 WORKDIR /app
-RUN npm -g install pnpm
+RUN npm -g install pnpm@7
 
 FROM base as builder
 COPY package.json pnpm-lock.yaml ./
