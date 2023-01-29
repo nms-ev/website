@@ -1,3 +1,3 @@
-<button on:click {...$$restProps}>
+<button on:click {...$$props}>
   <slot />
 </button>
