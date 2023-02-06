@@ -17,13 +17,6 @@
 <Footer />
 
 <style>
-  :global(:root) {
-    --max-width: 70rem;
-    --content-width: 30rem;
-    --line-size: 0.075rem;
-    --transition: all ease-in-out 200ms;
-  }
-
   main {
     padding-top: var(--nav-height);
     min-height: calc(100% - var(--footer-height));
