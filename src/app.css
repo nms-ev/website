@@ -16,6 +16,13 @@ body {
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
+:root {
+  --max-width: 70rem;
+  --content-width: 30rem;
+  --line-size: 0.075rem;
+  --transition: all ease-in-out 200ms;
+}
+
 /* GENERAL */
 
 html,
@@ -23,6 +30,11 @@ body,
 #svelte {
   height: 100%;
   width: 100%;
+}
+
+svg {
+  height: 1em;
+  width: auto;
 }
 
 a {
