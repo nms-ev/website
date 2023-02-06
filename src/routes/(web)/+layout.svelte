@@ -9,7 +9,7 @@
 </svelte:head>
 
 <Nav />
-<main data-sveltekit-prefetch>
+<main>
   <Container>
     <slot />
   </Container>
@@ -26,5 +26,6 @@
 
   main {
     padding-top: var(--nav-height);
+    min-height: calc(100% - var(--footer-height));
   }
 </style>

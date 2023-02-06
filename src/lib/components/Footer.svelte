@@ -46,7 +46,7 @@
 
 <style>
   :global(:root) {
-    --footer-height: 3rem;
+    --footer-height: 2.5rem;
   }
 
   .wrapper {

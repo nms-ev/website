@@ -10,14 +10,14 @@
       <h2 class="m-0 mb-2"><Nms /></h2>
       <h1 class="m-0"><ColorText text="nms" /></h1>
       <br />
-      <p class="text-center">_ music, art, ...more *</p>
+      <p class="text-center mb-0">_ music, art, ...more *</p>
     </div>
   </div>
 </Transition>
 
 <style>
   .wrapper {
-    height: calc(100vh - var(--nav-height) - 2.5rem);
+    height: calc(100vh - var(--nav-height) - var(--footer-height));
     font-variation-settings: 'wght' 201;
   }
   h1 {
