@@ -24,6 +24,28 @@ export type Languages = {
   name?: string
 }
 
+export type Links = {
+  id: number
+  status: string
+  sort?: number
+  user_created?: string | DirectusUsers
+  date_created?: string
+  user_updated?: string | DirectusUsers
+  date_updated?: string
+  href?: string
+  icon?: string
+  label?: string
+  huge?: boolean
+}
+
+export type Menu = {
+  slug: string
+  user_created?: string | DirectusUsers
+  date_created?: string
+  user_updated?: string | DirectusUsers
+  date_updated?: string
+}
+
 export type Names = {
   id: number
   status: string
@@ -370,6 +392,8 @@ export type CustomDirectusTypes = {
   events: Events
   events_translations: EventsTranslations
   languages: Languages
+  links: Links
+  menu: Menu
   names: Names
   pages: Pages
   pages_translations: PagesTranslations
