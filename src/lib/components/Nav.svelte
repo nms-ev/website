@@ -45,9 +45,9 @@
       </div>
 
       <!-- Socials -->
-      <div class="flex ml-4">
+      <div class="flex gap-2">
         {#each socials as { href, icon }}
-          <a class="text-xl ml-2" {href} target="_blank" rel="noopener noreferrer">
+          <a class="text-xl" {href} target="_blank" rel="noopener noreferrer">
             <Icon name={icon} />
           </a>
         {/each}

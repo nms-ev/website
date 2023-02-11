@@ -24,7 +24,7 @@ addMessages('de', de)
 export const formatDate = derived(date, (date) => (d: string) => date(DJS(d).toDate(), { dateStyle: 'medium' }))
 export const formatTime = (time: string) => time.slice(0, 5)
 
-type GetLocalisationKeysReturn<T extends LocalizedItem> = Record<keyof Omit<T, 'languages_id'>, string>
+export type GetLocalisationKeysReturn<T extends LocalizedItem> = Record<keyof Omit<T, 'languages_id'>, string>
 
 /**
  * Takes a localised field and registers all the content into the i18n library so the content can be used as regular localization keys.
