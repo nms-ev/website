@@ -8,6 +8,8 @@
   import Icon from './Icon.svelte'
 
   const links = [
+    { href: '/join', label: 'join' },
+    { href: '/members', label: 'members' },
     { href: '/events', label: 'events' },
     // { href: '/join', label: 'join' },
     // { href: '/about', label: 'about' },

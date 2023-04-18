@@ -1,0 +1,38 @@
+fragment EventTranslations on events_translations {
+  title
+  body
+  languages_id {
+    code
+  }
+}
+
+fragment Event on events {
+  slug
+  location
+  date
+  time
+  type
+  date_created
+  date_updated
+  translations {
+    ...EventTranslations
+  }
+}
+
+query Events {
+  events(sort: ["-date"], limit: -1, filter: { status: { _eq: "published" } }) {
+    ...Event
+  }
+}
+
+query Event($slug: String!) {
+  events(filter: { slug: { _eq: $slug }, status: { _eq: "published" } }, limit: 1) {
+    ...Event
+  }
+}
+
+query UpcomingEventSince($date: String!) {
+  events(sort: ["date"], limit: 1, filter: { status: { _eq: "published" }, date: { _gt: $date } }) {
+    ...Event
+  }
+}

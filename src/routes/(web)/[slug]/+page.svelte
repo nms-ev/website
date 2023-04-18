@@ -12,9 +12,9 @@
   $: date = data.page.date_updated || data.page.date_created || null
 </script>
 
-<Page title={$_(data.keys.title)}>
+<Page title={data.t.title}>
   <Content reader>
-    <RichContent html={$_(data.keys.body)} />
+    <RichContent html={data.t.body} />
   </Content>
   {#if date}
     <LastUpdatedFooter {date} />

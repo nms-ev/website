@@ -1,0 +1,12 @@
+fragment Link on links {
+  icon
+  huge
+  href
+  label
+}
+
+query Links {
+  links(limit: -1, filter: { status: { _eq: "published" } }) {
+    ...Link
+  }
+}

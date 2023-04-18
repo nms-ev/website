@@ -15,7 +15,8 @@
     web: Globe,
   }
 
-  function getIcon(icon: string = '') {
+  function getIcon(icon?: string | null) {
+    if (!icon) return null
     if (icon in iconMap) return iconMap[icon as keyof typeof iconMap]
     return null
   }

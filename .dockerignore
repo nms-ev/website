@@ -1,6 +1,8 @@
 *
 !src
 !static
+!.env.sample
+!codegen.yml
 !package.json
 !pnpm-lock.yaml
 !postcss.config.cjs

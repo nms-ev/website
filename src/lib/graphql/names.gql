@@ -1,0 +1,5 @@
+query Names {
+  names(filter: { status: { _eq: "published" } }, limit: -1) {
+    name
+  }
+}
