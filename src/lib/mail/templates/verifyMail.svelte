@@ -11,7 +11,7 @@
   <Preview preview="Verify your NMS registration" />
   <Section style={main}>
     <Container style={container}>
-      <Img src="https://dev.cupcakearmy.xyz/round_black.png" alt="NMS logo" width="200" height="200" />
+      <Img src="https://nms-ev.org/round_black.png" alt="NMS logo" width="200" height="200" />
       <Text style={paragraph}>Hi {name}, welcome to NMS!</Text>
       <Text style={paragraph}>We need to confirm your mail first 🤗</Text>
       <Button style={button} {href}>Verify</Button>

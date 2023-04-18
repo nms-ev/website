@@ -3,6 +3,7 @@ export const fontFamily =
 
 export const main = {
   backgroundColor: '#ffffff',
+  color: '#000000',
 }
 
 export const container = {
@@ -18,8 +19,9 @@ export const paragraph = {
 
 export const button = {
   fontFamily,
-  backgroundColor: '#0000000',
-  color: '#fff',
+  backgroundColor: '#fff',
+  color: '#000',
+  border: '1px solid #000',
   fontSize: '16px',
   padding: '12px 24px',
   textDecoration: 'none',
