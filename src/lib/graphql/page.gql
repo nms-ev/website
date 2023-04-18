@@ -1,0 +1,28 @@
+fragment PageTranslations on pages_translations {
+  title
+  body
+  languages_id {
+    code
+  }
+}
+
+fragment Page on pages {
+  slug
+  date_created
+  date_updated
+  translations {
+    ...PageTranslations
+  }
+}
+
+query Pages {
+  pages(limit: -1, filter: { status: { _eq: "published" } }) {
+    ...Page
+  }
+}
+
+query Page($slug: String!) {
+  pages(limit: -1, filter: { slug: { _eq: $slug }, status: { _eq: "published" } }) {
+    ...Page
+  }
+}

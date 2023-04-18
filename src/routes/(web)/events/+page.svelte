@@ -9,8 +9,8 @@
 
 <Page title="Events">
   <div class="mt-32" />
-  {#each data.events as { event, keys }}
-    <EventPreview {event} {keys} />
+  {#each data.events as { event, t }}
+    <EventPreview {event} {t} />
   {/each}
   <div class="mb-64" />
 </Page>

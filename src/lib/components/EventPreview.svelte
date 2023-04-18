@@ -2,12 +2,11 @@
   import { _ } from 'svelte-i18n'
 
   import Icon from '$lib/components/Icon.svelte'
-  import { formatDate, type GetLocalisationKeysReturn } from '$lib/locale'
-  import type { Events, EventsTranslations } from '$lib/sdk/types'
-  import type { DefaultItem } from '@directus/sdk'
+  import type { EventFragment, EventTranslationsFragment } from '$lib/graphql/gen'
+  import { formatDate } from '$lib/locale'
 
-  export let event: DefaultItem<Events>
-  export let keys: GetLocalisationKeysReturn<EventsTranslations>
+  export let event: EventFragment
+  export let t: EventTranslationsFragment
 </script>
 
 <a href={`/events/${event.slug}`}>
@@ -18,7 +17,7 @@
       <div><Icon inline name="type" /> {$_(`events.types.${event.type}`)}</div>
     </div>
     <div class="text">
-      <h2>{$_(keys.title)}</h2>
+      <h2>{t.title}</h2>
     </div>
     <div class="icon flex">
       <Icon name="arrow_right" />

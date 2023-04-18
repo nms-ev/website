@@ -12,11 +12,11 @@
 
   export let data: PageData
 
-  const { event, keys } = data
+  const { event, t } = data
   const date = event.date_updated || event.date_created || null
 </script>
 
-<Page title={$_(keys.title)}>
+<Page title={t.title}>
   <Back to="/events" />
   <Content reader>
     <header class="flex mono">
@@ -44,7 +44,7 @@
         </div>
       </div>
     </header>
-    <RichContent html={$_(keys.body)} />
+    <RichContent html={t.body} />
   </Content>
   {#if date}
     <LastUpdatedFooter {date} />

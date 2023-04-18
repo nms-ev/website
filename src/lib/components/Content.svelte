@@ -2,7 +2,7 @@
   export let reader: boolean = false
 </script>
 
-<div class:reader class="px-4 mx-auto w-fit">
+<div class:reader class="px-4 mx-auto w-fit max-w-full">
   <slot />
 </div>
 

@@ -1,408 +1,431 @@
-export type Events = {
+export type Address = {
+  city: string
+  country: string
   id: number
-  status: string
-  date_created?: string
-  date_updated?: string
-  slug: string
-  date: string
-  time?: string
-  location: string
-  type?: string
-  translations: string | EventsTranslations[]
-}
-
-export type EventsTranslations = {
-  id: number
-  events_id?: number | Events
-  languages_id?: string | Languages
-  title?: string
-  body?: string
-}
-
-export type Languages = {
-  code: string
-  name?: string
-}
-
-export type Links = {
-  id: number
-  status: string
-  sort?: number
-  user_created?: string | DirectusUsers
-  date_created?: string
-  user_updated?: string | DirectusUsers
-  date_updated?: string
-  href?: string
-  icon?: string
-  label?: string
-  huge?: boolean
-}
-
-export type Menu = {
-  slug: string
-  user_created?: string | DirectusUsers
-  date_created?: string
-  user_updated?: string | DirectusUsers
-  date_updated?: string
-}
-
-export type Names = {
-  id: number
-  status: string
-  sort?: number
-  user_created?: string | DirectusUsers
-  date_created?: string
-  user_updated?: string | DirectusUsers
-  date_updated?: string
-  name: string
-}
-
-export type Pages = {
-  id: number
-  status: string
-  sort?: number
-  date_created?: string
-  date_updated?: string
-  slug: string
-  translations: string | PagesTranslations[]
-}
-
-export type PagesTranslations = {
-  id: number
-  languages_id?: string | Languages
-  pages_id?: number | Pages
-  title?: string
-  body?: string
+  street: string
+  zip: string
 }
 
 export type DirectusActivity = {
-  id: number
   action: string
-  user?: string | DirectusUsers
-  timestamp: string
-  ip?: string
-  user_agent?: string
   collection: string
+  comment?: string | null
+  id: number
+  ip?: string | null
   item: string
-  comment?: string
-  origin?: string
-  revisions: string | DirectusRevisions[]
+  origin?: string | null
+  revisions?: any[] | DirectusRevisions[] | null
+  timestamp: string
+  user?: string | DirectusUsers | null
+  user_agent?: string | null
 }
 
 export type DirectusCollections = {
-  collection: string
-  icon?: string
-  note?: string
-  display_template?: string
-  hidden: boolean
-  singleton: boolean
-  translations?: unknown
-  archive_field?: string
+  accountability?: string | null
   archive_app_filter: boolean
-  archive_value?: string
-  unarchive_value?: string
-  sort_field?: string
-  accountability?: string
-  color?: string
-  item_duplication_fields?: unknown
-  sort?: number
-  group?: string | DirectusCollections
+  archive_field?: string | null
+  archive_value?: string | null
   collapse: string
+  collection: string
+  color?: string | null
+  display_template?: string | null
+  group?: string | DirectusCollections | null
+  hidden: boolean
+  icon?: string | null
+  item_duplication_fields?: unknown | null
+  note?: string | null
+  singleton: boolean
+  sort?: number | null
+  sort_field?: string | null
+  translations?: unknown | null
+  unarchive_value?: string | null
+}
+
+export type DirectusDashboards = {
+  color?: string | null
+  date_created?: string | null
+  icon: string
+  id: string
+  name: string
+  note?: string | null
+  panels?: any[] | DirectusPanels[] | null
+  user_created?: string | DirectusUsers | null
 }
 
 export type DirectusFields = {
-  id: number
-  collection: string | DirectusCollections
+  collection?: string | DirectusCollections | null
+  conditions?: unknown | null
+  display?: string | null
+  display_options?: unknown | null
   field: string
-  special?: unknown
-  interface?: string
-  options?: unknown
-  display?: string
-  display_options?: unknown
-  readonly: boolean
+  group?: string | DirectusFields | null
   hidden: boolean
-  sort?: number
-  width?: string
-  translations?: unknown
-  note?: string
-  conditions?: unknown
-  required?: boolean
-  group?: string | DirectusFields
-  validation?: unknown
-  validation_message?: string
+  id: number
+  interface?: string | null
+  note?: string | null
+  options?: unknown | null
+  readonly: boolean
+  required?: boolean | null
+  sort?: number | null
+  special?: unknown | null
+  translations?: unknown | null
+  validation?: unknown | null
+  validation_message?: string | null
+  width?: string | null
 }
 
 export type DirectusFiles = {
-  id: string
-  storage: string
-  filename_disk?: string
+  charset?: string | null
+  description?: string | null
+  duration?: number | null
+  embed?: string | null
+  filename_disk?: string | null
   filename_download: string
-  title?: string
-  type?: string
-  folder?: string | DirectusFolders
-  uploaded_by?: string | DirectusUsers
-  uploaded_on: string
-  modified_by?: string | DirectusUsers
+  filesize?: number | null
+  folder?: string | DirectusFolders | null
+  height?: number | null
+  id: string
+  location?: string | null
+  metadata?: unknown | null
+  modified_by?: string | DirectusUsers | null
   modified_on: string
-  charset?: string
-  filesize?: number
-  width?: number
-  height?: number
-  duration?: number
-  embed?: string
-  description?: string
-  location?: string
-  tags?: unknown
-  metadata?: unknown
+  storage: string
+  tags?: unknown | null
+  title?: string | null
+  type?: string | null
+  uploaded_by?: string | DirectusUsers | null
+  uploaded_on: string
+  width?: number | null
+}
+
+export type DirectusFlows = {
+  accountability?: string | null
+  color?: string | null
+  date_created?: string | null
+  description?: string | null
+  icon?: string | null
+  id: string
+  name: string
+  operation?: string | DirectusOperations | null
+  operations?: any[] | DirectusOperations[] | null
+  options?: unknown | null
+  status: string
+  trigger?: string | null
+  user_created?: string | DirectusUsers | null
 }
 
 export type DirectusFolders = {
   id: string
   name: string
-  parent?: string | DirectusFolders
+  parent?: string | DirectusFolders | null
 }
 
 export type DirectusMigrations = {
-  version: string
   name: string
-  timestamp?: string
+  timestamp?: string | null
+  version: string
+}
+
+export type DirectusNotifications = {
+  collection?: string | null
+  id: number
+  item?: string | null
+  message?: string | null
+  recipient?: string | DirectusUsers | null
+  sender?: string | DirectusUsers | null
+  status?: string | null
+  subject: string
+  timestamp?: string | null
+}
+
+export type DirectusOperations = {
+  date_created?: string | null
+  flow?: string | DirectusFlows | null
+  id: string
+  key: string
+  name?: string | null
+  options?: unknown | null
+  position_x: number
+  position_y: number
+  reject?: string | DirectusOperations | null
+  resolve?: string | DirectusOperations | null
+  type: string
+  user_created?: string | DirectusUsers | null
+}
+
+export type DirectusPanels = {
+  color?: string | null
+  dashboard?: string | DirectusDashboards | null
+  date_created?: string | null
+  height: number
+  icon?: string | null
+  id: string
+  name?: string | null
+  note?: string | null
+  options?: unknown | null
+  position_x: number
+  position_y: number
+  show_header: boolean
+  type: string
+  user_created?: string | DirectusUsers | null
+  width: number
 }
 
 export type DirectusPermissions = {
-  id: number
-  role?: string | DirectusRoles
-  collection: string
   action: string
-  permissions?: unknown
-  validation?: unknown
-  presets?: unknown
-  fields?: unknown
+  collection: string
+  fields?: unknown | null
+  id: number
+  permissions?: unknown | null
+  presets?: unknown | null
+  role?: string | DirectusRoles | null
+  validation?: unknown | null
 }
 
 export type DirectusPresets = {
-  id: number
-  bookmark?: string
-  user?: string | DirectusUsers
-  role?: string | DirectusRoles
-  collection?: string
-  search?: string
-  layout?: string
-  layout_query?: unknown
-  layout_options?: unknown
-  refresh_interval?: number
-  filter?: unknown
+  bookmark?: string | null
+  collection?: string | null
+  color?: string | null
+  filter?: unknown | null
   icon: string
-  color?: string
+  id: number
+  layout?: string | null
+  layout_options?: unknown | null
+  layout_query?: unknown | null
+  refresh_interval?: number | null
+  role?: string | DirectusRoles | null
+  search?: string | null
+  user?: string | DirectusUsers | null
 }
 
 export type DirectusRelations = {
   id: number
+  junction_field?: string | null
   many_collection: string
   many_field: string
-  one_collection?: string
-  one_field?: string
-  one_collection_field?: string
-  one_allowed_collections?: unknown
-  junction_field?: string
-  sort_field?: string
+  one_allowed_collections?: unknown | null
+  one_collection?: string | null
+  one_collection_field?: string | null
   one_deselect_action: string
+  one_field?: string | null
+  sort_field?: string | null
 }
 
 export type DirectusRevisions = {
-  id: number
-  activity: number | DirectusActivity
+  activity?: number | DirectusActivity | null
   collection: string
+  data?: unknown | null
+  delta?: unknown | null
+  id: number
   item: string
-  data?: unknown
-  delta?: unknown
-  parent?: number | DirectusRevisions
+  parent?: number | DirectusRevisions | null
 }
 
 export type DirectusRoles = {
-  id: string
-  name: string
-  icon: string
-  description?: string
-  ip_access?: unknown
-  enforce_tfa: boolean
   admin_access: boolean
   app_access: boolean
-  users: string | DirectusUsers[]
+  description?: string | null
+  enforce_tfa: boolean
+  icon: string
+  id: string
+  ip_access?: unknown | null
+  name: string
+  users?: any[] | DirectusUsers[] | null
 }
 
 export type DirectusSessions = {
-  token: string
-  user?: string | DirectusUsers
   expires: string
-  ip?: string
-  user_agent?: string
-  share?: string | DirectusShares
-  origin?: string
+  ip?: string | null
+  origin?: string | null
+  share?: string | DirectusShares | null
+  token: string
+  user?: string | DirectusUsers | null
+  user_agent?: string | null
 }
 
 export type DirectusSettings = {
-  id: number
-  project_name: string
-  project_url?: string
-  project_color?: string
-  project_logo?: string | DirectusFiles
-  public_foreground?: string | DirectusFiles
-  public_background?: string | DirectusFiles
-  public_note?: string
-  auth_login_attempts?: number
-  auth_password_policy?: string
-  storage_asset_transform?: string
-  storage_asset_presets?: unknown
-  custom_css?: string
-  storage_default_folder?: string | DirectusFolders
-  basemaps?: unknown
-  mapbox_key?: string
-  module_bar?: unknown
-  project_descriptor?: string
-  translation_strings?: unknown
+  auth_login_attempts?: number | null
+  auth_password_policy?: string | null
+  basemaps?: unknown | null
+  custom_aspect_ratios?: unknown | null
+  custom_css?: string | null
   default_language: string
-  custom_aspect_ratios?: unknown
-}
-
-export type DirectusUsers = {
-  id: string
-  first_name?: string
-  last_name?: string
-  email?: string
-  password?: string
-  location?: string
-  title?: string
-  description?: string
-  tags?: unknown
-  avatar?: string | DirectusFiles
-  language?: string
-  theme?: string
-  tfa_secret?: string
-  status: string
-  role?: string | DirectusRoles
-  token?: string
-  last_access?: string
-  last_page?: string
-  provider: string
-  external_identifier?: string
-  auth_data?: unknown
-  email_notifications?: boolean
-}
-
-export type DirectusWebhooks = {
   id: number
-  name: string
-  method: string
-  url: string
-  status: string
-  data: boolean
-  actions: unknown
-  collections: unknown
-  headers?: unknown
-}
-
-export type DirectusDashboards = {
-  id: string
-  name: string
-  icon: string
-  note?: string
-  date_created?: string
-  user_created?: string | DirectusUsers
-  color?: string
-  panels: string | DirectusPanels[]
-}
-
-export type DirectusPanels = {
-  id: string
-  dashboard: string | DirectusDashboards
-  name?: string
-  icon?: string
-  color?: string
-  show_header: boolean
-  note?: string
-  type: string
-  position_x: number
-  position_y: number
-  width: number
-  height: number
-  options?: unknown
-  date_created?: string
-  user_created?: string | DirectusUsers
-}
-
-export type DirectusNotifications = {
-  id: number
-  timestamp?: string
-  status?: string
-  recipient: string | DirectusUsers
-  sender?: string | DirectusUsers
-  subject: string
-  message?: string
-  collection?: string
-  item?: string
+  mapbox_key?: string | null
+  module_bar?: unknown | null
+  project_color?: string | null
+  project_descriptor?: string | null
+  project_logo?: string | DirectusFiles | null
+  project_name: string
+  project_url?: string | null
+  public_background?: string | DirectusFiles | null
+  public_foreground?: string | DirectusFiles | null
+  public_note?: string | null
+  storage_asset_presets?: unknown | null
+  storage_asset_transform?: string | null
+  storage_default_folder?: string | DirectusFolders | null
+  translation_strings?: unknown | null
 }
 
 export type DirectusShares = {
+  collection?: string | DirectusCollections | null
+  date_created?: string | null
+  date_end?: string | null
+  date_start?: string | null
   id: string
-  name?: string
-  collection?: string | DirectusCollections
-  item?: string
-  role?: string | DirectusRoles
-  password?: string
-  user_created?: string | DirectusUsers
-  date_created?: string
-  date_start?: string
-  date_end?: string
-  times_used?: number
-  max_uses?: number
+  item?: string | null
+  max_uses?: number | null
+  name?: string | null
+  password?: string | null
+  role?: string | DirectusRoles | null
+  times_used?: number | null
+  user_created?: string | DirectusUsers | null
 }
 
-export type DirectusFlows = {
+export type DirectusUsers = {
+  auth_data?: unknown | null
+  avatar?: string | DirectusFiles | null
+  description?: string | null
+  email?: string | null
+  email_notifications?: boolean | null
+  external_identifier?: string | null
+  first_name?: string | null
   id: string
-  name: string
-  icon?: string
-  color?: string
-  description?: string
+  language?: string | null
+  last_access?: string | null
+  last_name?: string | null
+  last_page?: string | null
+  location?: string | null
+  password?: string | null
+  provider: string
+  role?: string | DirectusRoles | null
   status: string
-  trigger?: string
-  accountability?: string
-  options?: unknown
-  operation?: string | DirectusOperations
-  date_created?: string
-  user_created?: string | DirectusUsers
-  operations: string | DirectusOperations[]
+  tags?: unknown | null
+  tfa_secret?: string | null
+  theme?: string | null
+  title?: string | null
+  token?: string | null
 }
 
-export type DirectusOperations = {
+export type DirectusWebhooks = {
+  actions: unknown
+  collections: unknown
+  data: boolean
+  headers?: unknown | null
+  id: number
+  method: string
+  name: string
+  status: string
+  url: string
+}
+
+export type Events = {
+  date: string
+  date_created?: string | null
+  date_updated?: string | null
+  id: number
+  location: string
+  slug: string
+  status: string
+  time?: string | null
+  translations?: any[] | EventsTranslations[] | null
+  type?: string | null
+}
+
+export type EventsTranslations = {
+  body?: string | null
+  events_id?: number | Events | null
+  id: number
+  languages_id?: string | Languages | null
+  title?: string | null
+}
+
+export type Languages = {
+  code: string
+  name?: string | null
+}
+
+export type Links = {
+  date_created?: string | null
+  date_updated?: string | null
+  href?: string | null
+  huge?: boolean | null
+  icon?: string | null
+  id: number
+  label?: string | null
+  sort?: number | null
+  status: string
+  user_created?: string | DirectusUsers | null
+  user_updated?: string | DirectusUsers | null
+}
+
+export type Members = {
+  address?: number | Address | null
+  birthday: string
+  contribution?: string | null
+  date_created?: string | null
+  date_updated?: string | null
+  email: string
   id: string
-  name?: string
-  key: string
+  membership?: string | null
+  mollie_customer_id?: string | null
+  name: string
+  status: string
   type: string
-  position_x: number
-  position_y: number
-  options?: unknown
-  resolve?: string | DirectusOperations
-  reject?: string | DirectusOperations
-  flow: string | DirectusFlows
-  date_created?: string
-  user_created?: string | DirectusUsers
+  user_created?: string | DirectusUsers | null
+  user_updated?: string | DirectusUsers | null
+}
+
+export type Menu = {
+  date_created?: string | null
+  date_updated?: string | null
+  slug: string
+  user_created?: string | DirectusUsers | null
+  user_updated?: string | DirectusUsers | null
+}
+
+export type Names = {
+  date_created?: string | null
+  date_updated?: string | null
+  id: number
+  name: string
+  sort?: number | null
+  status: string
+  user_created?: string | DirectusUsers | null
+  user_updated?: string | DirectusUsers | null
+}
+
+export type Pages = {
+  date_created?: string | null
+  date_updated?: string | null
+  id: number
+  slug: string
+  sort?: number | null
+  status: string
+  translations?: any[] | PagesTranslations[] | null
+}
+
+export type PagesTranslations = {
+  body?: string | null
+  id: number
+  languages_id?: string | Languages | null
+  pages_id?: number | Pages | null
+  title?: string | null
 }
 
 export type CustomDirectusTypes = {
-  events: Events
-  events_translations: EventsTranslations
-  languages: Languages
-  links: Links
-  menu: Menu
-  names: Names
-  pages: Pages
-  pages_translations: PagesTranslations
+  address: Address
   directus_activity: DirectusActivity
   directus_collections: DirectusCollections
+  directus_dashboards: DirectusDashboards
   directus_fields: DirectusFields
   directus_files: DirectusFiles
+  directus_flows: DirectusFlows
   directus_folders: DirectusFolders
   directus_migrations: DirectusMigrations
+  directus_notifications: DirectusNotifications
+  directus_operations: DirectusOperations
+  directus_panels: DirectusPanels
   directus_permissions: DirectusPermissions
   directus_presets: DirectusPresets
   directus_relations: DirectusRelations
@@ -410,12 +433,16 @@ export type CustomDirectusTypes = {
   directus_roles: DirectusRoles
   directus_sessions: DirectusSessions
   directus_settings: DirectusSettings
+  directus_shares: DirectusShares
   directus_users: DirectusUsers
   directus_webhooks: DirectusWebhooks
-  directus_dashboards: DirectusDashboards
-  directus_panels: DirectusPanels
-  directus_notifications: DirectusNotifications
-  directus_shares: DirectusShares
-  directus_flows: DirectusFlows
-  directus_operations: DirectusOperations
+  events: Events
+  events_translations: EventsTranslations
+  languages: Languages
+  links: Links
+  members: Members
+  menu: Menu
+  names: Names
+  pages: Pages
+  pages_translations: PagesTranslations
 }

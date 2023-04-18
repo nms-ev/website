@@ -1,0 +1,64 @@
+fragment Member on members {
+  # General
+  id
+  status
+  type
+
+  # Membership
+  mollie_customer_id
+  membership
+  contribution
+
+  # Personal data
+  name
+  email
+  birthday
+  address {
+    street
+    zip
+    city
+    country
+  }
+}
+
+query GetMember($id: ID!) {
+  members_by_id(id: $id) {
+    ...Member
+  }
+}
+
+query GetMemberByEmail($email: String!) {
+  members(limit: 1, filter: { email: { _eq: $email } }) {
+    ...Member
+  }
+}
+
+query GetMemberByMollieCustomerID($mollie_customer_id: String!) {
+  members(limit: 1, filter: { mollie_customer_id: { _eq: $mollie_customer_id } }) {
+    ...Member
+  }
+}
+
+query GetMembers {
+  members(limit: -1) {
+    ...Member
+  }
+}
+
+query GetMembersByIDs($ids: [String]) {
+  members(filter: { id: { _in: $ids } }) {
+    ...Member
+  }
+}
+
+mutation CreateMember($data: create_members_input!) {
+  create_members_item(data: $data) {
+    ...Member
+  }
+}
+
+mutation UpdateMember($id: ID!, $data: update_members_input!) {
+  update_members_item(id: $id, data: $data) {
+    ...Member
+  }
+}

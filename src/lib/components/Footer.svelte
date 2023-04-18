@@ -1,16 +1,9 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n'
   import Clock from './Clock.svelte'
-
   import Container from './Container.svelte'
 
-  const right = [
-    { href: 'https://nms-ev.slack.com', label: 'Slack', external: true },
-    { href: 'https://space.nms-ev.org', label: 'Space', external: true },
-    { href: 'https://board.nms-ev.org', label: 'Board', external: true },
-    { href: 'https://api.nms-ev.org', label: 'API', external: true },
-    { href: '/impressum', label: 'Impressum' },
-  ]
+  const right = [{ href: '/impressum', label: 'Impressum' }]
 </script>
 
 <footer>
@@ -29,13 +22,9 @@
 
       <nav class="flex-1">
         <ul class="flex justify-end">
-          {#each right as { href, label, external }}
+          {#each right as { href, label }}
             <li class="ml-4 capitalize">
-              {#if external}
-                <a {href} target="_blank" rel="noopener noreferrer">{label}</a>
-              {:else}
-                <a {href}>{label}</a>
-              {/if}
+              <a {href}>{label}</a>
             </li>
           {/each}
         </ul>

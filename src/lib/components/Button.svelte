@@ -1,8 +1,14 @@
 <script lang="ts">
+  import type { HTMLButtonAttributes } from 'svelte/elements'
+
+  interface $$Props extends HTMLButtonAttributes {
+    wide?: boolean
+  }
+
   export let wide = false
 </script>
 
-<button on:click class="px-4 py-3" class:w-full={wide}>
+<button {...$$restProps} on:click class="px-4 py-3" class:w-full={wide}>
   <slot />
 </button>
 

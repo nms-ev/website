@@ -1,5 +1,4 @@
 import { browser } from '$app/environment'
-import type { Languages } from '$lib/sdk/types'
 import { DJS } from '$lib/time'
 import { addMessages, date, getLocaleFromNavigator, init } from 'svelte-i18n'
 import { derived } from 'svelte/store'
@@ -8,10 +7,10 @@ import de from './locales/de.json'
 import en from './locales/en.json'
 
 export type LocalizedItem = {
-  languages_id?: string | Languages
+  readonly languages_id?: { code: string } | null
 }
 
-const fallbackLocale = 'de'
+export const fallbackLocale = 'de'
 
 init({
   fallbackLocale,
@@ -24,30 +23,27 @@ addMessages('de', de)
 export const formatDate = derived(date, (date) => (d: string) => date(DJS(d).toDate(), { dateStyle: 'medium' }))
 export const formatTime = (time: string) => time.slice(0, 5)
 
-export type GetLocalisationKeysReturn<T extends LocalizedItem> = Record<keyof Omit<T, 'languages_id'>, string>
+export function matchLanguage(language: string, languages: string[]): number {
+  // To lowercase
+  language = language.toLowerCase()
+  languages = languages.map((l) => l.toLowerCase())
+  // Check if is exact match
+  const i = languages.indexOf(language)
+  if (i !== -1) return i
+  // Check if matches prefix
+  const lang_reduced = language.split('-')[0]
+  const langs_reduced = languages.map((l) => l.split('-')[0])
+  const j = langs_reduced.indexOf(lang_reduced)
+  if (j !== -1) return j
+  // Check if matches fallback, if not already fallback
+  if (language === fallbackLocale) throw new Error('no matching locale found')
+  return matchLanguage(fallbackLocale, languages)
+}
 
-/**
- * Takes a localised field and registers all the content into the i18n library so the content can be used as regular localization keys.
- *
- * @param prefix A unique prefix for the resource
- * @param translations
- * @returns The keys for the translation content as an object
- */
-export function getLocalisationKeys<T extends LocalizedItem>(
-  prefix: string,
-  translations: T[]
-): GetLocalisationKeysReturn<T> {
-  const keys = {} as GetLocalisationKeysReturn<T>
-  for (const { languages_id, ...rest } of translations) {
-    for (const [item, value] of Object.entries(rest)) {
-      if (languages_id) {
-        const key = `dynamic.${prefix}.${item}`
-        // @ts-ignore
-        keys[item] = key
-        const code = typeof languages_id === 'string' ? languages_id : languages_id.code
-        addMessages(code.split('-')[0], { [key]: value as string })
-      }
-    }
-  }
-  return keys
+export function getLocalisedItems<T extends LocalizedItem>(translations: T[], language: string): T {
+  const lang = matchLanguage(
+    language,
+    translations.map((t) => t.languages_id?.code ?? '')
+  )
+  return translations[lang]
 }
