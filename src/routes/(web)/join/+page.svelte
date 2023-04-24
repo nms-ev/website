@@ -123,7 +123,7 @@
               autocomplete="address-line1"
               error={getError('address.street')}
             />
-            <div class="md:flex gap-4">
+            <div class="flex gap-3 flex-col md:flex-row">
               <TextInput
                 bind:value={form.address.zip}
                 label="Zip"
@@ -149,7 +149,7 @@
             {#if error}
               <p class="text-red-800">{error}</p>
             {/if}
-            <div class:opacity-50={!parsed.success}>
+            <div class:opacity-20={!parsed.success}>
               <Button type="submit" label="Register" />
             </div>
           </div>
