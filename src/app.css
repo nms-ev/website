@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-appearance: none;
+}
+
 body {
   font-family: 'Mulish';
   font-variation-settings: 'wght' 300;
@@ -66,7 +70,7 @@ h5,
 h6 {
   margin: 0;
   font-weight: normal;
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 h1 {
@@ -88,6 +92,10 @@ hr {
   color: inherit;
   border: none;
   border-bottom: var(--line-size) solid currentColor;
+}
+
+fieldset {
+  display: contents;
 }
 
 /* UTILITY */

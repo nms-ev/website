@@ -15,7 +15,7 @@
 <Field {label} {error}>
   <input
     {...inputProps}
-    class="bg-[var(--bg-color)] py-0.5 border-solid border-b-[0.075rem] text-base border-current"
+    class="bg-[var(--bg-color)] py-0.5 rounded-none border-solid border-b-[0.075rem] text-base border-current"
     bind:value
   />
 </Field>

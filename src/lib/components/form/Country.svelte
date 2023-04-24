@@ -16,7 +16,7 @@
 <Field {label} {error}>
   <select
     {...selectProps}
-    class="bg-[var(--bg-color)] py-0.5 border-solid border-b-[0.075rem] text-base border-current"
+    class="bg-[var(--bg-color)] py-0.5 rounded-none border-solid border-b-[0.075rem] text-base border-current"
     bind:value
   >
     {#each Object.entries(getCodeList()) as [code, name]}
