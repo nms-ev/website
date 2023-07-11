@@ -8,6 +8,7 @@ fragment Member on members {
   mollie_customer_id
   membership
   contribution
+  renew
 
   # Personal data
   name

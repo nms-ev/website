@@ -20,6 +20,10 @@ const config: CodegenConfig = {
         useTypeImports: true,
         immutableTypes: true,
         dedupeFragments: true,
+        defaultScalarType: 'unknown',
+        scalars: {
+          Date: 'string',
+        },
       },
     },
     '.schema.gql': {

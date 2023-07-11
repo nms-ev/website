@@ -1,6 +1,12 @@
 """ISO8601 Date values"""
 scalar Date
 
+enum EventEnum {
+  create
+  delete
+  update
+}
+
 """BigInt value"""
 scalar GraphQLBigInt
 
@@ -121,6 +127,36 @@ type Query {
   pages_translations_by_id(id: ID!): pages_translations
 }
 
+type Subscription {
+  address_mutated(event: EventEnum): address_mutated
+  directus_activity_mutated(event: EventEnum): directus_activity_mutated
+  directus_dashboards_mutated(event: EventEnum): directus_dashboards_mutated
+  directus_files_mutated(event: EventEnum): directus_files_mutated
+  directus_flows_mutated(event: EventEnum): directus_flows_mutated
+  directus_folders_mutated(event: EventEnum): directus_folders_mutated
+  directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
+  directus_operations_mutated(event: EventEnum): directus_operations_mutated
+  directus_panels_mutated(event: EventEnum): directus_panels_mutated
+  directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
+  directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
+  directus_roles_mutated(event: EventEnum): directus_roles_mutated
+  directus_settings_mutated(event: EventEnum): directus_settings_mutated
+  directus_shares_mutated(event: EventEnum): directus_shares_mutated
+  directus_translations_mutated(event: EventEnum): directus_translations_mutated
+  directus_users_mutated(event: EventEnum): directus_users_mutated
+  directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
+  events_mutated(event: EventEnum): events_mutated
+  events_translations_mutated(event: EventEnum): events_translations_mutated
+  languages_mutated(event: EventEnum): languages_mutated
+  links_mutated(event: EventEnum): links_mutated
+  members_mutated(event: EventEnum): members_mutated
+  menu_mutated(event: EventEnum): menu_mutated
+  names_mutated(event: EventEnum): names_mutated
+  pages_mutated(event: EventEnum): pages_mutated
+  pages_translations_mutated(event: EventEnum): pages_translations_mutated
+}
+
 type address {
   city: String!
   country: String!
@@ -162,6 +198,12 @@ input address_filter {
   id: number_filter_operators
   street: string_filter_operators
   zip: string_filter_operators
+}
+
+type address_mutated {
+  data: address
+  event: EventEnum
+  key: ID!
 }
 
 input boolean_filter_operators {
@@ -308,6 +350,9 @@ input create_members_input {
   membership: Date
   mollie_customer_id: String
   name: String!
+
+  """Automatically renew membership after expiration"""
+  renew: Boolean
   status: String
   type: String!
   user_created: create_directus_users_input
@@ -412,6 +457,80 @@ type delete_one {
   id: ID!
 }
 
+type directus_activity {
+  action: String!
+  collection: String!
+  comment: String
+  id: ID!
+  ip: String
+  item: String!
+  origin: String
+  revisions(filter: directus_revisions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_revisions]
+  revisions_func: count_functions
+  timestamp: Date
+  timestamp_func: datetime_functions
+  user(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+  user_agent: String
+}
+
+input directus_activity_filter {
+  _and: [directus_activity_filter]
+  _or: [directus_activity_filter]
+  action: string_filter_operators
+  collection: string_filter_operators
+  comment: string_filter_operators
+  id: number_filter_operators
+  ip: string_filter_operators
+  item: string_filter_operators
+  origin: string_filter_operators
+  revisions: directus_revisions_filter
+  revisions_func: count_function_filter_operators
+  timestamp: date_filter_operators
+  timestamp_func: datetime_function_filter_operators
+  user: directus_users_filter
+  user_agent: string_filter_operators
+}
+
+type directus_activity_mutated {
+  data: directus_activity
+  event: EventEnum
+  key: ID!
+}
+
+type directus_dashboards {
+  color: String
+  date_created: Date
+  date_created_func: datetime_functions
+  icon: String
+  id: ID!
+  name: String!
+  note: String
+  panels(filter: directus_panels_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_panels]
+  panels_func: count_functions
+  user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+}
+
+input directus_dashboards_filter {
+  _and: [directus_dashboards_filter]
+  _or: [directus_dashboards_filter]
+  color: string_filter_operators
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  icon: string_filter_operators
+  id: string_filter_operators
+  name: string_filter_operators
+  note: string_filter_operators
+  panels: directus_panels_filter
+  panels_func: count_function_filter_operators
+  user_created: directus_users_filter
+}
+
+type directus_dashboards_mutated {
+  data: directus_dashboards
+  event: EventEnum
+  key: ID!
+}
+
 type directus_files {
   charset: String
   description: String
@@ -470,6 +589,58 @@ input directus_files_filter {
   width: number_filter_operators
 }
 
+type directus_files_mutated {
+  data: directus_files
+  event: EventEnum
+  key: ID!
+}
+
+type directus_flows {
+  accountability: String
+  color: String
+  date_created: Date
+  date_created_func: datetime_functions
+  description: String
+  icon: String
+  id: ID!
+  name: String!
+  operation(filter: directus_operations_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_operations
+  operations(filter: directus_operations_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_operations]
+  operations_func: count_functions
+  options: JSON
+  options_func: count_functions
+  status: String
+  trigger: String
+  user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+}
+
+input directus_flows_filter {
+  _and: [directus_flows_filter]
+  _or: [directus_flows_filter]
+  accountability: string_filter_operators
+  color: string_filter_operators
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  description: string_filter_operators
+  icon: string_filter_operators
+  id: string_filter_operators
+  name: string_filter_operators
+  operation: directus_operations_filter
+  operations: directus_operations_filter
+  operations_func: count_function_filter_operators
+  options: string_filter_operators
+  options_func: count_function_filter_operators
+  status: string_filter_operators
+  trigger: string_filter_operators
+  user_created: directus_users_filter
+}
+
+type directus_flows_mutated {
+  data: directus_flows
+  event: EventEnum
+  key: ID!
+}
+
 type directus_folders {
   id: ID!
   name: String!
@@ -482,6 +653,198 @@ input directus_folders_filter {
   id: string_filter_operators
   name: string_filter_operators
   parent: directus_folders_filter
+}
+
+type directus_folders_mutated {
+  data: directus_folders
+  event: EventEnum
+  key: ID!
+}
+
+type directus_notifications {
+  collection: String
+  id: ID!
+  item: String
+  message: String
+  recipient(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+  sender(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+  status: String
+  subject: String!
+  timestamp: Date
+  timestamp_func: datetime_functions
+}
+
+type directus_notifications_mutated {
+  data: directus_notifications
+  event: EventEnum
+  key: ID!
+}
+
+type directus_operations {
+  date_created: Date
+  date_created_func: datetime_functions
+  flow(filter: directus_flows_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_flows
+  id: ID!
+  key: String!
+  name: String
+  options: JSON
+  options_func: count_functions
+  position_x: Int!
+  position_y: Int!
+  reject(filter: directus_operations_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_operations
+  resolve(filter: directus_operations_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_operations
+  type: String!
+  user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+}
+
+input directus_operations_filter {
+  _and: [directus_operations_filter]
+  _or: [directus_operations_filter]
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  flow: directus_flows_filter
+  id: string_filter_operators
+  key: string_filter_operators
+  name: string_filter_operators
+  options: string_filter_operators
+  options_func: count_function_filter_operators
+  position_x: number_filter_operators
+  position_y: number_filter_operators
+  reject: directus_operations_filter
+  resolve: directus_operations_filter
+  type: string_filter_operators
+  user_created: directus_users_filter
+}
+
+type directus_operations_mutated {
+  data: directus_operations
+  event: EventEnum
+  key: ID!
+}
+
+type directus_panels {
+  color: String
+  dashboard(filter: directus_dashboards_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_dashboards
+  date_created: Date
+  date_created_func: datetime_functions
+  height: Int!
+  icon: String
+  id: ID!
+  name: String
+  note: String
+  options: JSON
+  options_func: count_functions
+  position_x: Int!
+  position_y: Int!
+  show_header: Boolean!
+  type: String!
+  user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+  width: Int!
+}
+
+input directus_panels_filter {
+  _and: [directus_panels_filter]
+  _or: [directus_panels_filter]
+  color: string_filter_operators
+  dashboard: directus_dashboards_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  height: number_filter_operators
+  icon: string_filter_operators
+  id: string_filter_operators
+  name: string_filter_operators
+  note: string_filter_operators
+  options: string_filter_operators
+  options_func: count_function_filter_operators
+  position_x: number_filter_operators
+  position_y: number_filter_operators
+  show_header: boolean_filter_operators
+  type: string_filter_operators
+  user_created: directus_users_filter
+  width: number_filter_operators
+}
+
+type directus_panels_mutated {
+  data: directus_panels
+  event: EventEnum
+  key: ID!
+}
+
+type directus_permissions {
+  action: String!
+  collection: String!
+  fields: [String]
+  id: ID!
+  permissions: JSON
+  permissions_func: count_functions
+  presets: JSON
+  presets_func: count_functions
+  role(filter: directus_roles_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_roles
+  validation: JSON
+  validation_func: count_functions
+}
+
+type directus_permissions_mutated {
+  data: directus_permissions
+  event: EventEnum
+  key: ID!
+}
+
+type directus_presets {
+  bookmark: String
+  collection: String
+  color: String
+  filter: JSON
+  filter_func: count_functions
+  icon: String
+  id: ID!
+  layout: String
+  layout_options: JSON
+  layout_options_func: count_functions
+  layout_query: JSON
+  layout_query_func: count_functions
+  refresh_interval: Int
+  role(filter: directus_roles_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_roles
+  search: String
+  user(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+}
+
+type directus_presets_mutated {
+  data: directus_presets
+  event: EventEnum
+  key: ID!
+}
+
+type directus_revisions {
+  activity(filter: directus_activity_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_activity
+  collection: String!
+  data: JSON
+  data_func: count_functions
+  delta: JSON
+  delta_func: count_functions
+  id: ID!
+  item: String!
+  parent(filter: directus_revisions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_revisions
+}
+
+input directus_revisions_filter {
+  _and: [directus_revisions_filter]
+  _or: [directus_revisions_filter]
+  activity: directus_activity_filter
+  collection: string_filter_operators
+  data: string_filter_operators
+  data_func: count_function_filter_operators
+  delta: string_filter_operators
+  delta_func: count_function_filter_operators
+  id: number_filter_operators
+  item: string_filter_operators
+  parent: directus_revisions_filter
+}
+
+type directus_revisions_mutated {
+  data: directus_revisions
+  event: EventEnum
+  key: ID!
 }
 
 type directus_roles {
@@ -510,6 +873,92 @@ input directus_roles_filter {
   name: string_filter_operators
   users: directus_users_filter
   users_func: count_function_filter_operators
+}
+
+type directus_roles_mutated {
+  data: directus_roles
+  event: EventEnum
+  key: ID!
+}
+
+type directus_settings {
+  auth_login_attempts: Int
+  auth_password_policy: String
+  basemaps: JSON
+  basemaps_func: count_functions
+  custom_aspect_ratios: JSON
+  custom_aspect_ratios_func: count_functions
+  custom_css: String
+  default_language: String
+  id: ID!
+  mapbox_key: String
+  module_bar: JSON
+  module_bar_func: count_functions
+
+  """$t:field_options.directus_settings.project_color_note"""
+  project_color: String
+  project_descriptor: String
+  project_logo(filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_files
+  project_name: String
+  project_url: String
+  public_background(filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_files
+  public_foreground(filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_files
+  public_note: String
+  storage_asset_presets: JSON
+  storage_asset_presets_func: count_functions
+  storage_asset_transform: String
+  storage_default_folder(filter: directus_folders_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_folders
+}
+
+type directus_settings_mutated {
+  data: directus_settings
+  event: EventEnum
+  key: ID!
+}
+
+type directus_shares {
+  collection: String
+  date_created: Date
+  date_created_func: datetime_functions
+
+  """$t:shared_leave_blank_for_unlimited"""
+  date_end: Date
+  date_end_func: datetime_functions
+
+  """$t:shared_leave_blank_for_unlimited"""
+  date_start: Date
+  date_start_func: datetime_functions
+  id: ID!
+  item: String
+
+  """$t:shared_leave_blank_for_unlimited"""
+  max_uses: Int
+  name: String
+
+  """$t:shared_leave_blank_for_unlimited"""
+  password: Hash
+  role(filter: directus_roles_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_roles
+  times_used: Int
+  user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
+}
+
+type directus_shares_mutated {
+  data: directus_shares
+  event: EventEnum
+  key: ID!
+}
+
+type directus_translations {
+  id: ID!
+  key: String!
+  language: String!
+  value: String!
+}
+
+type directus_translations_mutated {
+  data: directus_translations
+  event: EventEnum
+  key: ID!
 }
 
 type directus_users {
@@ -568,6 +1017,31 @@ input directus_users_filter {
   theme: string_filter_operators
   title: string_filter_operators
   token: hash_filter_operators
+}
+
+type directus_users_mutated {
+  data: directus_users
+  event: EventEnum
+  key: ID!
+}
+
+type directus_webhooks {
+  actions: [String]!
+  collections: [String]!
+  data: Boolean
+  headers: JSON
+  headers_func: count_functions
+  id: ID!
+  method: String
+  name: String!
+  status: String
+  url: String!
+}
+
+type directus_webhooks_mutated {
+  data: directus_webhooks
+  event: EventEnum
+  key: ID!
 }
 
 type events {
@@ -640,6 +1114,12 @@ input events_filter {
   type: string_filter_operators
 }
 
+type events_mutated {
+  data: events
+  event: EventEnum
+  key: ID!
+}
+
 type events_translations {
   body: String!
   events_id(filter: events_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): events
@@ -684,6 +1164,12 @@ input events_translations_filter {
   title: string_filter_operators
 }
 
+type events_translations_mutated {
+  data: events_translations
+  event: EventEnum
+  key: ID!
+}
+
 input hash_filter_operators {
   _empty: Boolean
   _nempty: Boolean
@@ -713,6 +1199,12 @@ input languages_filter {
   _or: [languages_filter]
   code: string_filter_operators
   name: string_filter_operators
+}
+
+type languages_mutated {
+  data: languages
+  event: EventEnum
+  key: ID!
 }
 
 type links {
@@ -781,6 +1273,12 @@ input links_filter {
   user_updated: directus_users_filter
 }
 
+type links_mutated {
+  data: links
+  event: EventEnum
+  key: ID!
+}
+
 type members {
   address(filter: address_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): address
   birthday: String!
@@ -797,6 +1295,9 @@ type members {
   membership_func: date_functions
   mollie_customer_id: String
   name: String!
+
+  """Automatically renew membership after expiration"""
+  renew: Boolean
   status: String
   type: String!
   user_created(filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_users
@@ -829,6 +1330,9 @@ type members_aggregated_count {
   membership: Int
   mollie_customer_id: Int
   name: Int
+
+  """Automatically renew membership after expiration"""
+  renew: Int
   status: Int
   type: Int
   user_created: Int
@@ -858,10 +1362,17 @@ input members_filter {
   membership_func: date_function_filter_operators
   mollie_customer_id: string_filter_operators
   name: string_filter_operators
+  renew: boolean_filter_operators
   status: string_filter_operators
   type: string_filter_operators
   user_created: directus_users_filter
   user_updated: directus_users_filter
+}
+
+type members_mutated {
+  data: members
+  event: EventEnum
+  key: ID!
 }
 
 type menu {
@@ -899,6 +1410,12 @@ input menu_filter {
   slug: string_filter_operators
   user_created: directus_users_filter
   user_updated: directus_users_filter
+}
+
+type menu_mutated {
+  data: menu
+  event: EventEnum
+  key: ID!
 }
 
 type names {
@@ -956,6 +1473,12 @@ input names_filter {
   status: string_filter_operators
   user_created: directus_users_filter
   user_updated: directus_users_filter
+}
+
+type names_mutated {
+  data: names
+  event: EventEnum
+  key: ID!
 }
 
 input number_filter_operators {
@@ -1029,6 +1552,12 @@ input pages_filter {
   translations_func: count_function_filter_operators
 }
 
+type pages_mutated {
+  data: pages
+  event: EventEnum
+  key: ID!
+}
+
 type pages_translations {
   body: String!
   id: ID!
@@ -1073,18 +1602,28 @@ input pages_translations_filter {
   title: string_filter_operators
 }
 
+type pages_translations_mutated {
+  data: pages_translations
+  event: EventEnum
+  key: ID!
+}
+
 input string_filter_operators {
   _contains: String
   _empty: Boolean
   _ends_with: String
   _eq: String
   _icontains: String
+  _iends_with: String
   _in: [String]
+  _istarts_with: String
   _ncontains: String
   _nempty: Boolean
   _nends_with: String
   _neq: String
+  _niends_with: String
   _nin: [String]
+  _nistarts_with: String
   _nnull: Boolean
   _nstarts_with: String
   _null: Boolean
@@ -1232,6 +1771,9 @@ input update_members_input {
   membership: Date
   mollie_customer_id: String
   name: String
+
+  """Automatically renew membership after expiration"""
+  renew: Boolean
   status: String
   type: String
   user_created: update_directus_users_input
