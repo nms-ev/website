@@ -77,7 +77,7 @@
   }
 
   h2 {
-    font-variation-settings: 'wght' 300;
+    font-weight: 300;
     font-size: min(8vw, 6rem);
   }
 </style>

@@ -21,7 +21,6 @@
     transition: var(--transition);
     font-size: inherit;
     font-weight: inherit;
-    font-variation-settings: inherit;
   }
 
   button:hover {

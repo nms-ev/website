@@ -8,11 +8,11 @@
 <style>
   h1 {
     font-size: max(10vw, 16vh);
-    font-variation-settings: 'wght' 201;
+    font-weight: 201;
   }
   p {
     font-size: max(4vw, 4vh);
-    font-variation-settings: 'wght' 201;
+    font-weight: 201;
     max-width: initial;
   }
 </style>

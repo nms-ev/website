@@ -23,9 +23,9 @@
 <style>
   .wrapper {
     height: calc(100vh - var(--nav-height) - var(--footer-height));
-    font-variation-settings: 'wght' 201;
   }
   h2 {
+    font-weight: 201;
     font-size: min(10vw, 7vh);
   }
 </style>
