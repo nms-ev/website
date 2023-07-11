@@ -13,12 +13,18 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Date: any;
-  GraphQLBigInt: any;
-  GraphQLStringOrFloat: any;
-  Hash: any;
-  JSON: any;
+  Date: string;
+  GraphQLBigInt: unknown;
+  GraphQLStringOrFloat: unknown;
+  Hash: unknown;
+  JSON: unknown;
 };
+
+export enum EventEnum {
+  Create = 'create',
+  Delete = 'delete',
+  Update = 'update'
+}
 
 export type Mutation = {
   readonly __typename?: 'Mutation';
@@ -938,6 +944,172 @@ export type QueryPages_Translations_By_IdArgs = {
   id: Scalars['ID'];
 };
 
+export type Subscription = {
+  readonly __typename?: 'Subscription';
+  readonly address_mutated?: Maybe<Address_Mutated>;
+  readonly directus_activity_mutated?: Maybe<Directus_Activity_Mutated>;
+  readonly directus_dashboards_mutated?: Maybe<Directus_Dashboards_Mutated>;
+  readonly directus_files_mutated?: Maybe<Directus_Files_Mutated>;
+  readonly directus_flows_mutated?: Maybe<Directus_Flows_Mutated>;
+  readonly directus_folders_mutated?: Maybe<Directus_Folders_Mutated>;
+  readonly directus_notifications_mutated?: Maybe<Directus_Notifications_Mutated>;
+  readonly directus_operations_mutated?: Maybe<Directus_Operations_Mutated>;
+  readonly directus_panels_mutated?: Maybe<Directus_Panels_Mutated>;
+  readonly directus_permissions_mutated?: Maybe<Directus_Permissions_Mutated>;
+  readonly directus_presets_mutated?: Maybe<Directus_Presets_Mutated>;
+  readonly directus_revisions_mutated?: Maybe<Directus_Revisions_Mutated>;
+  readonly directus_roles_mutated?: Maybe<Directus_Roles_Mutated>;
+  readonly directus_settings_mutated?: Maybe<Directus_Settings_Mutated>;
+  readonly directus_shares_mutated?: Maybe<Directus_Shares_Mutated>;
+  readonly directus_translations_mutated?: Maybe<Directus_Translations_Mutated>;
+  readonly directus_users_mutated?: Maybe<Directus_Users_Mutated>;
+  readonly directus_webhooks_mutated?: Maybe<Directus_Webhooks_Mutated>;
+  readonly events_mutated?: Maybe<Events_Mutated>;
+  readonly events_translations_mutated?: Maybe<Events_Translations_Mutated>;
+  readonly languages_mutated?: Maybe<Languages_Mutated>;
+  readonly links_mutated?: Maybe<Links_Mutated>;
+  readonly members_mutated?: Maybe<Members_Mutated>;
+  readonly menu_mutated?: Maybe<Menu_Mutated>;
+  readonly names_mutated?: Maybe<Names_Mutated>;
+  readonly pages_mutated?: Maybe<Pages_Mutated>;
+  readonly pages_translations_mutated?: Maybe<Pages_Translations_Mutated>;
+};
+
+
+export type SubscriptionAddress_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Activity_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Dashboards_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Files_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Flows_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Folders_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Notifications_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Operations_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Panels_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Permissions_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Presets_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Revisions_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Roles_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Settings_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Shares_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Translations_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Users_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDirectus_Webhooks_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionEvents_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionEvents_Translations_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionLanguages_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionLinks_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionMembers_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionMenu_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionNames_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionPages_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionPages_Translations_MutatedArgs = {
+  event?: InputMaybe<EventEnum>;
+};
+
 export type Address = {
   readonly __typename?: 'address';
   readonly city: Scalars['String'];
@@ -983,6 +1155,13 @@ export type Address_Filter = {
   readonly id?: InputMaybe<Number_Filter_Operators>;
   readonly street?: InputMaybe<String_Filter_Operators>;
   readonly zip?: InputMaybe<String_Filter_Operators>;
+};
+
+export type Address_Mutated = {
+  readonly __typename?: 'address_mutated';
+  readonly data?: Maybe<Address>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Boolean_Filter_Operators = {
@@ -1129,6 +1308,8 @@ export type Create_Members_Input = {
   readonly membership?: InputMaybe<Scalars['Date']>;
   readonly mollie_customer_id?: InputMaybe<Scalars['String']>;
   readonly name: Scalars['String'];
+  /** Automatically renew membership after expiration */
+  readonly renew?: InputMaybe<Scalars['Boolean']>;
   readonly status?: InputMaybe<Scalars['String']>;
   readonly type: Scalars['String'];
   readonly user_created?: InputMaybe<Create_Directus_Users_Input>;
@@ -1237,6 +1418,124 @@ export type Delete_One = {
   readonly id: Scalars['ID'];
 };
 
+export type Directus_Activity = {
+  readonly __typename?: 'directus_activity';
+  readonly action: Scalars['String'];
+  readonly collection: Scalars['String'];
+  readonly comment?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly ip?: Maybe<Scalars['String']>;
+  readonly item: Scalars['String'];
+  readonly origin?: Maybe<Scalars['String']>;
+  readonly revisions?: Maybe<ReadonlyArray<Maybe<Directus_Revisions>>>;
+  readonly revisions_func?: Maybe<Count_Functions>;
+  readonly timestamp?: Maybe<Scalars['Date']>;
+  readonly timestamp_func?: Maybe<Datetime_Functions>;
+  readonly user?: Maybe<Directus_Users>;
+  readonly user_agent?: Maybe<Scalars['String']>;
+};
+
+
+export type Directus_ActivityRevisionsArgs = {
+  filter?: InputMaybe<Directus_Revisions_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_ActivityUserArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Activity_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Activity_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Activity_Filter>>>;
+  readonly action?: InputMaybe<String_Filter_Operators>;
+  readonly collection?: InputMaybe<String_Filter_Operators>;
+  readonly comment?: InputMaybe<String_Filter_Operators>;
+  readonly id?: InputMaybe<Number_Filter_Operators>;
+  readonly ip?: InputMaybe<String_Filter_Operators>;
+  readonly item?: InputMaybe<String_Filter_Operators>;
+  readonly origin?: InputMaybe<String_Filter_Operators>;
+  readonly revisions?: InputMaybe<Directus_Revisions_Filter>;
+  readonly revisions_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly timestamp?: InputMaybe<Date_Filter_Operators>;
+  readonly timestamp_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly user?: InputMaybe<Directus_Users_Filter>;
+  readonly user_agent?: InputMaybe<String_Filter_Operators>;
+};
+
+export type Directus_Activity_Mutated = {
+  readonly __typename?: 'directus_activity_mutated';
+  readonly data?: Maybe<Directus_Activity>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Dashboards = {
+  readonly __typename?: 'directus_dashboards';
+  readonly color?: Maybe<Scalars['String']>;
+  readonly date_created?: Maybe<Scalars['Date']>;
+  readonly date_created_func?: Maybe<Datetime_Functions>;
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly name: Scalars['String'];
+  readonly note?: Maybe<Scalars['String']>;
+  readonly panels?: Maybe<ReadonlyArray<Maybe<Directus_Panels>>>;
+  readonly panels_func?: Maybe<Count_Functions>;
+  readonly user_created?: Maybe<Directus_Users>;
+};
+
+
+export type Directus_DashboardsPanelsArgs = {
+  filter?: InputMaybe<Directus_Panels_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_DashboardsUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Dashboards_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Dashboards_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Dashboards_Filter>>>;
+  readonly color?: InputMaybe<String_Filter_Operators>;
+  readonly date_created?: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly icon?: InputMaybe<String_Filter_Operators>;
+  readonly id?: InputMaybe<String_Filter_Operators>;
+  readonly name?: InputMaybe<String_Filter_Operators>;
+  readonly note?: InputMaybe<String_Filter_Operators>;
+  readonly panels?: InputMaybe<Directus_Panels_Filter>;
+  readonly panels_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly user_created?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Directus_Dashboards_Mutated = {
+  readonly __typename?: 'directus_dashboards_mutated';
+  readonly data?: Maybe<Directus_Dashboards>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Directus_Files = {
   readonly __typename?: 'directus_files';
   readonly charset?: Maybe<Scalars['String']>;
@@ -1326,6 +1625,91 @@ export type Directus_Files_Filter = {
   readonly width?: InputMaybe<Number_Filter_Operators>;
 };
 
+export type Directus_Files_Mutated = {
+  readonly __typename?: 'directus_files_mutated';
+  readonly data?: Maybe<Directus_Files>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Flows = {
+  readonly __typename?: 'directus_flows';
+  readonly accountability?: Maybe<Scalars['String']>;
+  readonly color?: Maybe<Scalars['String']>;
+  readonly date_created?: Maybe<Scalars['Date']>;
+  readonly date_created_func?: Maybe<Datetime_Functions>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly name: Scalars['String'];
+  readonly operation?: Maybe<Directus_Operations>;
+  readonly operations?: Maybe<ReadonlyArray<Maybe<Directus_Operations>>>;
+  readonly operations_func?: Maybe<Count_Functions>;
+  readonly options?: Maybe<Scalars['JSON']>;
+  readonly options_func?: Maybe<Count_Functions>;
+  readonly status?: Maybe<Scalars['String']>;
+  readonly trigger?: Maybe<Scalars['String']>;
+  readonly user_created?: Maybe<Directus_Users>;
+};
+
+
+export type Directus_FlowsOperationArgs = {
+  filter?: InputMaybe<Directus_Operations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_FlowsOperationsArgs = {
+  filter?: InputMaybe<Directus_Operations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_FlowsUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Flows_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Flows_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Flows_Filter>>>;
+  readonly accountability?: InputMaybe<String_Filter_Operators>;
+  readonly color?: InputMaybe<String_Filter_Operators>;
+  readonly date_created?: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly description?: InputMaybe<String_Filter_Operators>;
+  readonly icon?: InputMaybe<String_Filter_Operators>;
+  readonly id?: InputMaybe<String_Filter_Operators>;
+  readonly name?: InputMaybe<String_Filter_Operators>;
+  readonly operation?: InputMaybe<Directus_Operations_Filter>;
+  readonly operations?: InputMaybe<Directus_Operations_Filter>;
+  readonly operations_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly options?: InputMaybe<String_Filter_Operators>;
+  readonly options_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly status?: InputMaybe<String_Filter_Operators>;
+  readonly trigger?: InputMaybe<String_Filter_Operators>;
+  readonly user_created?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Directus_Flows_Mutated = {
+  readonly __typename?: 'directus_flows_mutated';
+  readonly data?: Maybe<Directus_Flows>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Directus_Folders = {
   readonly __typename?: 'directus_folders';
   readonly id: Scalars['ID'];
@@ -1349,6 +1733,341 @@ export type Directus_Folders_Filter = {
   readonly id?: InputMaybe<String_Filter_Operators>;
   readonly name?: InputMaybe<String_Filter_Operators>;
   readonly parent?: InputMaybe<Directus_Folders_Filter>;
+};
+
+export type Directus_Folders_Mutated = {
+  readonly __typename?: 'directus_folders_mutated';
+  readonly data?: Maybe<Directus_Folders>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Notifications = {
+  readonly __typename?: 'directus_notifications';
+  readonly collection?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly item?: Maybe<Scalars['String']>;
+  readonly message?: Maybe<Scalars['String']>;
+  readonly recipient?: Maybe<Directus_Users>;
+  readonly sender?: Maybe<Directus_Users>;
+  readonly status?: Maybe<Scalars['String']>;
+  readonly subject: Scalars['String'];
+  readonly timestamp?: Maybe<Scalars['Date']>;
+  readonly timestamp_func?: Maybe<Datetime_Functions>;
+};
+
+
+export type Directus_NotificationsRecipientArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_NotificationsSenderArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Notifications_Mutated = {
+  readonly __typename?: 'directus_notifications_mutated';
+  readonly data?: Maybe<Directus_Notifications>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Operations = {
+  readonly __typename?: 'directus_operations';
+  readonly date_created?: Maybe<Scalars['Date']>;
+  readonly date_created_func?: Maybe<Datetime_Functions>;
+  readonly flow?: Maybe<Directus_Flows>;
+  readonly id: Scalars['ID'];
+  readonly key: Scalars['String'];
+  readonly name?: Maybe<Scalars['String']>;
+  readonly options?: Maybe<Scalars['JSON']>;
+  readonly options_func?: Maybe<Count_Functions>;
+  readonly position_x: Scalars['Int'];
+  readonly position_y: Scalars['Int'];
+  readonly reject?: Maybe<Directus_Operations>;
+  readonly resolve?: Maybe<Directus_Operations>;
+  readonly type: Scalars['String'];
+  readonly user_created?: Maybe<Directus_Users>;
+};
+
+
+export type Directus_OperationsFlowArgs = {
+  filter?: InputMaybe<Directus_Flows_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_OperationsRejectArgs = {
+  filter?: InputMaybe<Directus_Operations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_OperationsResolveArgs = {
+  filter?: InputMaybe<Directus_Operations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_OperationsUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Operations_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Operations_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Operations_Filter>>>;
+  readonly date_created?: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly flow?: InputMaybe<Directus_Flows_Filter>;
+  readonly id?: InputMaybe<String_Filter_Operators>;
+  readonly key?: InputMaybe<String_Filter_Operators>;
+  readonly name?: InputMaybe<String_Filter_Operators>;
+  readonly options?: InputMaybe<String_Filter_Operators>;
+  readonly options_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly position_x?: InputMaybe<Number_Filter_Operators>;
+  readonly position_y?: InputMaybe<Number_Filter_Operators>;
+  readonly reject?: InputMaybe<Directus_Operations_Filter>;
+  readonly resolve?: InputMaybe<Directus_Operations_Filter>;
+  readonly type?: InputMaybe<String_Filter_Operators>;
+  readonly user_created?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Directus_Operations_Mutated = {
+  readonly __typename?: 'directus_operations_mutated';
+  readonly data?: Maybe<Directus_Operations>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Panels = {
+  readonly __typename?: 'directus_panels';
+  readonly color?: Maybe<Scalars['String']>;
+  readonly dashboard?: Maybe<Directus_Dashboards>;
+  readonly date_created?: Maybe<Scalars['Date']>;
+  readonly date_created_func?: Maybe<Datetime_Functions>;
+  readonly height: Scalars['Int'];
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly name?: Maybe<Scalars['String']>;
+  readonly note?: Maybe<Scalars['String']>;
+  readonly options?: Maybe<Scalars['JSON']>;
+  readonly options_func?: Maybe<Count_Functions>;
+  readonly position_x: Scalars['Int'];
+  readonly position_y: Scalars['Int'];
+  readonly show_header: Scalars['Boolean'];
+  readonly type: Scalars['String'];
+  readonly user_created?: Maybe<Directus_Users>;
+  readonly width: Scalars['Int'];
+};
+
+
+export type Directus_PanelsDashboardArgs = {
+  filter?: InputMaybe<Directus_Dashboards_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_PanelsUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Panels_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Panels_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Panels_Filter>>>;
+  readonly color?: InputMaybe<String_Filter_Operators>;
+  readonly dashboard?: InputMaybe<Directus_Dashboards_Filter>;
+  readonly date_created?: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func?: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly height?: InputMaybe<Number_Filter_Operators>;
+  readonly icon?: InputMaybe<String_Filter_Operators>;
+  readonly id?: InputMaybe<String_Filter_Operators>;
+  readonly name?: InputMaybe<String_Filter_Operators>;
+  readonly note?: InputMaybe<String_Filter_Operators>;
+  readonly options?: InputMaybe<String_Filter_Operators>;
+  readonly options_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly position_x?: InputMaybe<Number_Filter_Operators>;
+  readonly position_y?: InputMaybe<Number_Filter_Operators>;
+  readonly show_header?: InputMaybe<Boolean_Filter_Operators>;
+  readonly type?: InputMaybe<String_Filter_Operators>;
+  readonly user_created?: InputMaybe<Directus_Users_Filter>;
+  readonly width?: InputMaybe<Number_Filter_Operators>;
+};
+
+export type Directus_Panels_Mutated = {
+  readonly __typename?: 'directus_panels_mutated';
+  readonly data?: Maybe<Directus_Panels>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Permissions = {
+  readonly __typename?: 'directus_permissions';
+  readonly action: Scalars['String'];
+  readonly collection: Scalars['String'];
+  readonly fields?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly id: Scalars['ID'];
+  readonly permissions?: Maybe<Scalars['JSON']>;
+  readonly permissions_func?: Maybe<Count_Functions>;
+  readonly presets?: Maybe<Scalars['JSON']>;
+  readonly presets_func?: Maybe<Count_Functions>;
+  readonly role?: Maybe<Directus_Roles>;
+  readonly validation?: Maybe<Scalars['JSON']>;
+  readonly validation_func?: Maybe<Count_Functions>;
+};
+
+
+export type Directus_PermissionsRoleArgs = {
+  filter?: InputMaybe<Directus_Roles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Permissions_Mutated = {
+  readonly __typename?: 'directus_permissions_mutated';
+  readonly data?: Maybe<Directus_Permissions>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Presets = {
+  readonly __typename?: 'directus_presets';
+  readonly bookmark?: Maybe<Scalars['String']>;
+  readonly collection?: Maybe<Scalars['String']>;
+  readonly color?: Maybe<Scalars['String']>;
+  readonly filter?: Maybe<Scalars['JSON']>;
+  readonly filter_func?: Maybe<Count_Functions>;
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly layout?: Maybe<Scalars['String']>;
+  readonly layout_options?: Maybe<Scalars['JSON']>;
+  readonly layout_options_func?: Maybe<Count_Functions>;
+  readonly layout_query?: Maybe<Scalars['JSON']>;
+  readonly layout_query_func?: Maybe<Count_Functions>;
+  readonly refresh_interval?: Maybe<Scalars['Int']>;
+  readonly role?: Maybe<Directus_Roles>;
+  readonly search?: Maybe<Scalars['String']>;
+  readonly user?: Maybe<Directus_Users>;
+};
+
+
+export type Directus_PresetsRoleArgs = {
+  filter?: InputMaybe<Directus_Roles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_PresetsUserArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Presets_Mutated = {
+  readonly __typename?: 'directus_presets_mutated';
+  readonly data?: Maybe<Directus_Presets>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Revisions = {
+  readonly __typename?: 'directus_revisions';
+  readonly activity?: Maybe<Directus_Activity>;
+  readonly collection: Scalars['String'];
+  readonly data?: Maybe<Scalars['JSON']>;
+  readonly data_func?: Maybe<Count_Functions>;
+  readonly delta?: Maybe<Scalars['JSON']>;
+  readonly delta_func?: Maybe<Count_Functions>;
+  readonly id: Scalars['ID'];
+  readonly item: Scalars['String'];
+  readonly parent?: Maybe<Directus_Revisions>;
+};
+
+
+export type Directus_RevisionsActivityArgs = {
+  filter?: InputMaybe<Directus_Activity_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_RevisionsParentArgs = {
+  filter?: InputMaybe<Directus_Revisions_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Revisions_Filter = {
+  readonly _and?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Revisions_Filter>>>;
+  readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Directus_Revisions_Filter>>>;
+  readonly activity?: InputMaybe<Directus_Activity_Filter>;
+  readonly collection?: InputMaybe<String_Filter_Operators>;
+  readonly data?: InputMaybe<String_Filter_Operators>;
+  readonly data_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly delta?: InputMaybe<String_Filter_Operators>;
+  readonly delta_func?: InputMaybe<Count_Function_Filter_Operators>;
+  readonly id?: InputMaybe<Number_Filter_Operators>;
+  readonly item?: InputMaybe<String_Filter_Operators>;
+  readonly parent?: InputMaybe<Directus_Revisions_Filter>;
+};
+
+export type Directus_Revisions_Mutated = {
+  readonly __typename?: 'directus_revisions_mutated';
+  readonly data?: Maybe<Directus_Revisions>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Directus_Roles = {
@@ -1388,6 +2107,154 @@ export type Directus_Roles_Filter = {
   readonly name?: InputMaybe<String_Filter_Operators>;
   readonly users?: InputMaybe<Directus_Users_Filter>;
   readonly users_func?: InputMaybe<Count_Function_Filter_Operators>;
+};
+
+export type Directus_Roles_Mutated = {
+  readonly __typename?: 'directus_roles_mutated';
+  readonly data?: Maybe<Directus_Roles>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Settings = {
+  readonly __typename?: 'directus_settings';
+  readonly auth_login_attempts?: Maybe<Scalars['Int']>;
+  readonly auth_password_policy?: Maybe<Scalars['String']>;
+  readonly basemaps?: Maybe<Scalars['JSON']>;
+  readonly basemaps_func?: Maybe<Count_Functions>;
+  readonly custom_aspect_ratios?: Maybe<Scalars['JSON']>;
+  readonly custom_aspect_ratios_func?: Maybe<Count_Functions>;
+  readonly custom_css?: Maybe<Scalars['String']>;
+  readonly default_language?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly mapbox_key?: Maybe<Scalars['String']>;
+  readonly module_bar?: Maybe<Scalars['JSON']>;
+  readonly module_bar_func?: Maybe<Count_Functions>;
+  /** $t:field_options.directus_settings.project_color_note */
+  readonly project_color?: Maybe<Scalars['String']>;
+  readonly project_descriptor?: Maybe<Scalars['String']>;
+  readonly project_logo?: Maybe<Directus_Files>;
+  readonly project_name?: Maybe<Scalars['String']>;
+  readonly project_url?: Maybe<Scalars['String']>;
+  readonly public_background?: Maybe<Directus_Files>;
+  readonly public_foreground?: Maybe<Directus_Files>;
+  readonly public_note?: Maybe<Scalars['String']>;
+  readonly storage_asset_presets?: Maybe<Scalars['JSON']>;
+  readonly storage_asset_presets_func?: Maybe<Count_Functions>;
+  readonly storage_asset_transform?: Maybe<Scalars['String']>;
+  readonly storage_default_folder?: Maybe<Directus_Folders>;
+};
+
+
+export type Directus_SettingsProject_LogoArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_SettingsPublic_BackgroundArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_SettingsPublic_ForegroundArgs = {
+  filter?: InputMaybe<Directus_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_SettingsStorage_Default_FolderArgs = {
+  filter?: InputMaybe<Directus_Folders_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Settings_Mutated = {
+  readonly __typename?: 'directus_settings_mutated';
+  readonly data?: Maybe<Directus_Settings>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Shares = {
+  readonly __typename?: 'directus_shares';
+  readonly collection?: Maybe<Scalars['String']>;
+  readonly date_created?: Maybe<Scalars['Date']>;
+  readonly date_created_func?: Maybe<Datetime_Functions>;
+  /** $t:shared_leave_blank_for_unlimited */
+  readonly date_end?: Maybe<Scalars['Date']>;
+  readonly date_end_func?: Maybe<Datetime_Functions>;
+  /** $t:shared_leave_blank_for_unlimited */
+  readonly date_start?: Maybe<Scalars['Date']>;
+  readonly date_start_func?: Maybe<Datetime_Functions>;
+  readonly id: Scalars['ID'];
+  readonly item?: Maybe<Scalars['String']>;
+  /** $t:shared_leave_blank_for_unlimited */
+  readonly max_uses?: Maybe<Scalars['Int']>;
+  readonly name?: Maybe<Scalars['String']>;
+  /** $t:shared_leave_blank_for_unlimited */
+  readonly password?: Maybe<Scalars['Hash']>;
+  readonly role?: Maybe<Directus_Roles>;
+  readonly times_used?: Maybe<Scalars['Int']>;
+  readonly user_created?: Maybe<Directus_Users>;
+};
+
+
+export type Directus_SharesRoleArgs = {
+  filter?: InputMaybe<Directus_Roles_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type Directus_SharesUser_CreatedArgs = {
+  filter?: InputMaybe<Directus_Users_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+};
+
+export type Directus_Shares_Mutated = {
+  readonly __typename?: 'directus_shares_mutated';
+  readonly data?: Maybe<Directus_Shares>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Translations = {
+  readonly __typename?: 'directus_translations';
+  readonly id: Scalars['ID'];
+  readonly key: Scalars['String'];
+  readonly language: Scalars['String'];
+  readonly value: Scalars['String'];
+};
+
+export type Directus_Translations_Mutated = {
+  readonly __typename?: 'directus_translations_mutated';
+  readonly data?: Maybe<Directus_Translations>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Directus_Users = {
@@ -1467,6 +2334,34 @@ export type Directus_Users_Filter = {
   readonly theme?: InputMaybe<String_Filter_Operators>;
   readonly title?: InputMaybe<String_Filter_Operators>;
   readonly token?: InputMaybe<Hash_Filter_Operators>;
+};
+
+export type Directus_Users_Mutated = {
+  readonly __typename?: 'directus_users_mutated';
+  readonly data?: Maybe<Directus_Users>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
+export type Directus_Webhooks = {
+  readonly __typename?: 'directus_webhooks';
+  readonly actions: ReadonlyArray<Maybe<Scalars['String']>>;
+  readonly collections: ReadonlyArray<Maybe<Scalars['String']>>;
+  readonly data?: Maybe<Scalars['Boolean']>;
+  readonly headers?: Maybe<Scalars['JSON']>;
+  readonly headers_func?: Maybe<Count_Functions>;
+  readonly id: Scalars['ID'];
+  readonly method?: Maybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly status?: Maybe<Scalars['String']>;
+  readonly url: Scalars['String'];
+};
+
+export type Directus_Webhooks_Mutated = {
+  readonly __typename?: 'directus_webhooks_mutated';
+  readonly data?: Maybe<Directus_Webhooks>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Events = {
@@ -1553,6 +2448,13 @@ export type Events_Filter = {
   readonly type?: InputMaybe<String_Filter_Operators>;
 };
 
+export type Events_Mutated = {
+  readonly __typename?: 'events_mutated';
+  readonly data?: Maybe<Events>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Events_Translations = {
   readonly __typename?: 'events_translations';
   readonly body: Scalars['String'];
@@ -1621,6 +2523,13 @@ export type Events_Translations_Filter = {
   readonly title?: InputMaybe<String_Filter_Operators>;
 };
 
+export type Events_Translations_Mutated = {
+  readonly __typename?: 'events_translations_mutated';
+  readonly data?: Maybe<Events_Translations>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Hash_Filter_Operators = {
   readonly _empty?: InputMaybe<Scalars['Boolean']>;
   readonly _nempty?: InputMaybe<Scalars['Boolean']>;
@@ -1653,6 +2562,13 @@ export type Languages_Filter = {
   readonly _or?: InputMaybe<ReadonlyArray<InputMaybe<Languages_Filter>>>;
   readonly code?: InputMaybe<String_Filter_Operators>;
   readonly name?: InputMaybe<String_Filter_Operators>;
+};
+
+export type Languages_Mutated = {
+  readonly __typename?: 'languages_mutated';
+  readonly data?: Maybe<Languages>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Links = {
@@ -1745,6 +2661,13 @@ export type Links_Filter = {
   readonly user_updated?: InputMaybe<Directus_Users_Filter>;
 };
 
+export type Links_Mutated = {
+  readonly __typename?: 'links_mutated';
+  readonly data?: Maybe<Links>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Members = {
   readonly __typename?: 'members';
   readonly address?: Maybe<Address>;
@@ -1761,6 +2684,8 @@ export type Members = {
   readonly membership_func?: Maybe<Date_Functions>;
   readonly mollie_customer_id?: Maybe<Scalars['String']>;
   readonly name: Scalars['String'];
+  /** Automatically renew membership after expiration */
+  readonly renew?: Maybe<Scalars['Boolean']>;
   readonly status?: Maybe<Scalars['String']>;
   readonly type: Scalars['String'];
   readonly user_created?: Maybe<Directus_Users>;
@@ -1824,6 +2749,8 @@ export type Members_Aggregated_Count = {
   readonly membership?: Maybe<Scalars['Int']>;
   readonly mollie_customer_id?: Maybe<Scalars['Int']>;
   readonly name?: Maybe<Scalars['Int']>;
+  /** Automatically renew membership after expiration */
+  readonly renew?: Maybe<Scalars['Int']>;
   readonly status?: Maybe<Scalars['Int']>;
   readonly type?: Maybe<Scalars['Int']>;
   readonly user_created?: Maybe<Scalars['Int']>;
@@ -1853,10 +2780,18 @@ export type Members_Filter = {
   readonly membership_func?: InputMaybe<Date_Function_Filter_Operators>;
   readonly mollie_customer_id?: InputMaybe<String_Filter_Operators>;
   readonly name?: InputMaybe<String_Filter_Operators>;
+  readonly renew?: InputMaybe<Boolean_Filter_Operators>;
   readonly status?: InputMaybe<String_Filter_Operators>;
   readonly type?: InputMaybe<String_Filter_Operators>;
   readonly user_created?: InputMaybe<Directus_Users_Filter>;
   readonly user_updated?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Members_Mutated = {
+  readonly __typename?: 'members_mutated';
+  readonly data?: Maybe<Members>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Menu = {
@@ -1917,6 +2852,13 @@ export type Menu_Filter = {
   readonly slug?: InputMaybe<String_Filter_Operators>;
   readonly user_created?: InputMaybe<Directus_Users_Filter>;
   readonly user_updated?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Menu_Mutated = {
+  readonly __typename?: 'menu_mutated';
+  readonly data?: Maybe<Menu>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Names = {
@@ -1998,6 +2940,13 @@ export type Names_Filter = {
   readonly status?: InputMaybe<String_Filter_Operators>;
   readonly user_created?: InputMaybe<Directus_Users_Filter>;
   readonly user_updated?: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Names_Mutated = {
+  readonly __typename?: 'names_mutated';
+  readonly data?: Maybe<Names>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
 };
 
 export type Number_Filter_Operators = {
@@ -2085,6 +3034,13 @@ export type Pages_Filter = {
   readonly translations_func?: InputMaybe<Count_Function_Filter_Operators>;
 };
 
+export type Pages_Mutated = {
+  readonly __typename?: 'pages_mutated';
+  readonly data?: Maybe<Pages>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type Pages_Translations = {
   readonly __typename?: 'pages_translations';
   readonly body: Scalars['String'];
@@ -2153,18 +3109,29 @@ export type Pages_Translations_Filter = {
   readonly title?: InputMaybe<String_Filter_Operators>;
 };
 
+export type Pages_Translations_Mutated = {
+  readonly __typename?: 'pages_translations_mutated';
+  readonly data?: Maybe<Pages_Translations>;
+  readonly event?: Maybe<EventEnum>;
+  readonly key: Scalars['ID'];
+};
+
 export type String_Filter_Operators = {
   readonly _contains?: InputMaybe<Scalars['String']>;
   readonly _empty?: InputMaybe<Scalars['Boolean']>;
   readonly _ends_with?: InputMaybe<Scalars['String']>;
   readonly _eq?: InputMaybe<Scalars['String']>;
   readonly _icontains?: InputMaybe<Scalars['String']>;
+  readonly _iends_with?: InputMaybe<Scalars['String']>;
   readonly _in?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+  readonly _istarts_with?: InputMaybe<Scalars['String']>;
   readonly _ncontains?: InputMaybe<Scalars['String']>;
   readonly _nempty?: InputMaybe<Scalars['Boolean']>;
   readonly _nends_with?: InputMaybe<Scalars['String']>;
   readonly _neq?: InputMaybe<Scalars['String']>;
+  readonly _niends_with?: InputMaybe<Scalars['String']>;
   readonly _nin?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+  readonly _nistarts_with?: InputMaybe<Scalars['String']>;
   readonly _nnull?: InputMaybe<Scalars['Boolean']>;
   readonly _nstarts_with?: InputMaybe<Scalars['String']>;
   readonly _null?: InputMaybe<Scalars['Boolean']>;
@@ -2312,6 +3279,8 @@ export type Update_Members_Input = {
   readonly membership?: InputMaybe<Scalars['Date']>;
   readonly mollie_customer_id?: InputMaybe<Scalars['String']>;
   readonly name?: InputMaybe<Scalars['String']>;
+  /** Automatically renew membership after expiration */
+  readonly renew?: InputMaybe<Scalars['Boolean']>;
   readonly status?: InputMaybe<Scalars['String']>;
   readonly type?: InputMaybe<Scalars['String']>;
   readonly user_created?: InputMaybe<Update_Directus_Users_Input>;
@@ -2357,26 +3326,26 @@ export type Update_Pages_Translations_Input = {
 
 export type EventTranslationsFragment = { readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null };
 
-export type EventFragment = { readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: any, readonly time?: string | null, readonly type: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null };
+export type EventFragment = { readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: string, readonly time?: string | null, readonly type: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null };
 
 export type EventsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type EventsQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: any, readonly time?: string | null, readonly type: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
+export type EventsQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: string, readonly time?: string | null, readonly type: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
 
 export type EventQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type EventQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: any, readonly time?: string | null, readonly type: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
+export type EventQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: string, readonly time?: string | null, readonly type: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
 
 export type UpcomingEventSinceQueryVariables = Exact<{
   date: Scalars['String'];
 }>;
 
 
-export type UpcomingEventSinceQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: any, readonly time?: string | null, readonly type: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
+export type UpcomingEventSinceQuery = { readonly __typename?: 'Query', readonly events: ReadonlyArray<{ readonly __typename?: 'events', readonly slug: string, readonly location: string, readonly date: string, readonly time?: string | null, readonly type: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'events_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
 
 export type LinkFragment = { readonly __typename?: 'links', readonly icon?: string | null, readonly huge?: boolean | null, readonly href: string, readonly label: string };
 
@@ -2385,47 +3354,47 @@ export type LinksQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type LinksQuery = { readonly __typename?: 'Query', readonly links: ReadonlyArray<{ readonly __typename?: 'links', readonly icon?: string | null, readonly huge?: boolean | null, readonly href: string, readonly label: string }> };
 
-export type MemberFragment = { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null };
+export type MemberFragment = { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null };
 
 export type GetMemberQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GetMemberQuery = { readonly __typename?: 'Query', readonly members_by_id?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
+export type GetMemberQuery = { readonly __typename?: 'Query', readonly members_by_id?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
 
 export type GetMemberByEmailQueryVariables = Exact<{
   email: Scalars['String'];
 }>;
 
 
-export type GetMemberByEmailQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
+export type GetMemberByEmailQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
 
 export type GetMemberByMollieCustomerIdQueryVariables = Exact<{
   mollie_customer_id: Scalars['String'];
 }>;
 
 
-export type GetMemberByMollieCustomerIdQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
+export type GetMemberByMollieCustomerIdQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
 
 export type GetMembersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMembersQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
+export type GetMembersQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
 
 export type GetMembersByIDsQueryVariables = Exact<{
   ids?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
 }>;
 
 
-export type GetMembersByIDsQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
+export type GetMembersByIDsQuery = { readonly __typename?: 'Query', readonly members: ReadonlyArray<{ readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null }> };
 
 export type CreateMemberMutationVariables = Exact<{
   data: Create_Members_Input;
 }>;
 
 
-export type CreateMemberMutation = { readonly __typename?: 'Mutation', readonly create_members_item?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
+export type CreateMemberMutation = { readonly __typename?: 'Mutation', readonly create_members_item?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
 
 export type UpdateMemberMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -2433,7 +3402,7 @@ export type UpdateMemberMutationVariables = Exact<{
 }>;
 
 
-export type UpdateMemberMutation = { readonly __typename?: 'Mutation', readonly update_members_item?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: any | null, readonly contribution?: number | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
+export type UpdateMemberMutation = { readonly __typename?: 'Mutation', readonly update_members_item?: { readonly __typename?: 'members', readonly id: string, readonly status?: string | null, readonly type: string, readonly mollie_customer_id?: string | null, readonly membership?: string | null, readonly contribution?: number | null, readonly renew?: boolean | null, readonly name: string, readonly email: string, readonly birthday: string, readonly address?: { readonly __typename?: 'address', readonly street: string, readonly zip: string, readonly city: string, readonly country: string } | null } | null };
 
 export type NamesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2442,19 +3411,19 @@ export type NamesQuery = { readonly __typename?: 'Query', readonly names: Readon
 
 export type PageTranslationsFragment = { readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null };
 
-export type PageFragment = { readonly __typename?: 'pages', readonly slug: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null };
+export type PageFragment = { readonly __typename?: 'pages', readonly slug: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { readonly __typename?: 'Query', readonly pages: ReadonlyArray<{ readonly __typename?: 'pages', readonly slug: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
+export type PagesQuery = { readonly __typename?: 'Query', readonly pages: ReadonlyArray<{ readonly __typename?: 'pages', readonly slug: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
 
 export type PageQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type PageQuery = { readonly __typename?: 'Query', readonly pages: ReadonlyArray<{ readonly __typename?: 'pages', readonly slug: string, readonly date_created?: any | null, readonly date_updated?: any | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
+export type PageQuery = { readonly __typename?: 'Query', readonly pages: ReadonlyArray<{ readonly __typename?: 'pages', readonly slug: string, readonly date_created?: string | null, readonly date_updated?: string | null, readonly translations?: ReadonlyArray<{ readonly __typename?: 'pages_translations', readonly title: string, readonly body: string, readonly languages_id?: { readonly __typename?: 'languages', readonly code: string } | null } | null> | null }> };
 
 export const EventTranslationsFragmentDoc = gql`
     fragment EventTranslations on events_translations {
@@ -2495,6 +3464,7 @@ export const MemberFragmentDoc = gql`
   mollie_customer_id
   membership
   contribution
+  renew
   name
   email
   birthday

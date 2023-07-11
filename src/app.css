@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Mulish';
-  font-variation-settings: 'wght' 300;
+  font-weight: 300;
   line-height: 1.25;
   background-color: var(--bg-color);
 
@@ -45,7 +45,7 @@ a {
   color: inherit;
   text-decoration: inherit;
   cursor: pointer;
-  font-variation-settings: 'wght' 500;
+  font-weight: 500;
 }
 
 p {
@@ -69,8 +69,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-weight: normal;
-  /* word-break: break-all; */
+  font-weight: 300;
 }
 
 h1 {
@@ -106,5 +105,5 @@ fieldset {
 
 .mono {
   font-family: 'FiraCode', monospace;
-  font-variation-settings: 'wght' 400;
+  font-weight: 400;
 }

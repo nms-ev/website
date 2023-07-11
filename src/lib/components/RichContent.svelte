@@ -10,8 +10,7 @@
   section :global(strong),
   section :global(b),
   section :global(.b) {
-    /* font-variant: ; */
-    font-variation-settings: 'wgth' 300;
+    font-weight: 300;
   }
 
   section :global(a) {

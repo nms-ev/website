@@ -1,7 +1,7 @@
+import { isValidBirthday } from '$lib/time'
 import { z } from 'zod'
 import { address } from './address'
 import { nonEmptyString } from './common'
-import { DJS, isValidBirthday } from '$lib/time'
 
 export enum MemberType {
   Regular = 'regular',
@@ -15,7 +15,6 @@ export enum MemberStatus {
 }
 
 export const member = z.object({
-  id: z.string(),
   name: nonEmptyString,
   email: z.string().email(),
   birthday: z
@@ -24,10 +23,13 @@ export const member = z.object({
     .refine((v) => isValidBirthday(v), { message: 'Invalid birthday' }),
   address: address,
   type: z.nativeEnum(MemberType),
-  status: z.nativeEnum(MemberStatus),
-  contribution: z.string().regex(/^\d+\.\d{2}$/),
+  contribution: z.number().min(0),
+  renew: z.boolean(),
 })
 export type Member = z.infer<typeof member>
 
-export const memberCreate = member.omit({ status: true, id: true, contribution: true })
+export const memberCreate = member.omit({ renew: true })
 export type MemberCreate = z.infer<typeof memberCreate>
+
+export const memberUpdate = member.omit({ type: true }).partial()
+export type MemberUpdate = z.infer<typeof memberUpdate>

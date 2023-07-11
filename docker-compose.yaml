@@ -6,3 +6,27 @@ services:
     env_file: .env
     ports:
       - 80:3000
+
+  db:
+    image: postgres:14-alpine
+    # env_file: .env
+    environment:
+      - POSTGRES_DB=nms
+      - POSTGRES_USER=nms
+      - POSTGRES_PASSWORD=nms
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.json
+  
+  api:
+    image: directus/directus:10
+    environment:
+      - KEY=nms
+      - SECRET=somesecret
+      - DB_CLIENT=pg
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=nms
+      - DB_USER=nms
+      - DB_PASSWORD=nms
+    ports:
+      - "8055:8055"
