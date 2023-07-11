@@ -1,10 +1,17 @@
-import { SDK } from '$lib/graphql'
+import { Config } from '$lib/config'
+import { init } from '$lib/cron'
 import { SessionToken } from '$lib/jwt'
 import { fallbackLocale } from '$lib/locale'
+import { Member } from '$lib/models/member'
 import type { Handle } from '@sveltejs/kit'
 import { locale } from 'svelte-i18n'
 
+init()
+
 export const handle: Handle = async ({ event, resolve }) => {
+  // If no origin is set in config, take the one of the request
+  if (!Config.origin) Config.origin = event.url.origin
+
   // Language
   const languages = event.request.headers
     .get('accept-language')
@@ -25,9 +32,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     const sessionCookie = event.cookies.get('session')
     if (!sessionCookie) throw new Error('No session cookie')
     const { id } = await SessionToken.verify(sessionCookie)
-    const { members_by_id: member } = await SDK.GetMember({ id })
-    if (!member) throw new Error('no member found') // Will be caught below
-    event.locals.member = member
+    event.locals.member = await Member.getById(id)
   } catch {
     event.locals.member = null
   }

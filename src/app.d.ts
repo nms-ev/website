@@ -1,11 +1,11 @@
+import type { Member } from '$lib/models/member'
 import '@total-typescript/ts-reset'
-import type { MemberFragment } from '$lib/graphql/gen'
 
 declare global {
   namespace App {
     // interface Error {}
     interface Locals {
-      member: MemberFragment | null
+      member: Member | null
       languages: string[]
       language: string
     }

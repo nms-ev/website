@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private'
-import type { Member } from '$lib/validators/member'
+import type { MemberFragment } from '$lib/graphql/gen'
 import { SignJWT, jwtVerify, type JWTPayload } from 'jose'
 
 const secret = new TextEncoder().encode(env.SECRET)
@@ -29,4 +29,4 @@ class Token<T extends JWTPayload> {
 }
 
 export const LoginToken = new Token<{ email: string }>(TOKEN_TYPE.Session, '2h')
-export const SessionToken = new Token<Pick<Member, 'id' | 'email'>>(TOKEN_TYPE.Session, '30d')
+export const SessionToken = new Token<Pick<MemberFragment, 'id' | 'email'>>(TOKEN_TYPE.Session, '30d')

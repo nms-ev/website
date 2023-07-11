@@ -1,20 +1,47 @@
 <script lang="ts">
   import type { MemberFragment } from '$lib/graphql/gen'
+  import { formatDate } from '$lib/locale'
   import { DJS } from '$lib/time'
-  import { MemberStatus, MemberType } from '$lib/validators/member'
+  import { MemberStatus, MemberType, memberUpdate } from '$lib/validators/member'
   import Button from '../form/Button.svelte'
   import Decimal from '../form/Decimal.svelte'
 
   export let member: MemberFragment
   let contribution: number = member.contribution ?? 0
+  let error: Error | null = null
+  let loading: boolean = false
 
   async function setup() {
-    // TODO: enable
-    return
-    const response: any = await fetch('/members/setup', {
-      method: 'POST',
-    }).then((res) => res.json())
-    window.location.href = response.url
+    try {
+      loading = true
+      error = null
+      const response = await fetch('/members/setup', {
+        method: 'POST',
+      })
+      const payload: any = await response.json()
+      if (response.ok) {
+        window.location.href = payload.url
+      } else {
+        error = new Error(payload.message)
+        return
+      }
+    } catch (e) {
+      console.error(e)
+      if (e instanceof Error) error = e
+    } finally {
+      loading = false
+    }
+  }
+
+  async function changeRenewState(enabled: boolean) {
+    try {
+      loading = true
+      const body = memberUpdate.parse({ renew: enabled })
+      await fetch('/members/update', { method: 'POST', body: JSON.stringify(body) })
+      window.location.reload()
+    } finally {
+      loading = false
+    }
   }
 </script>
 
@@ -37,11 +64,10 @@
 
   <section>
     <div class="text-2xl">Membership</div>
-    Coming soon™️
-    {#if false}
-      {#if member.status === MemberStatus.Approved}
-        {#if !member.membership || DJS(member.membership).isBefore(DJS())}
-          <form on:submit|preventDefault={setup}>
+    {#if member.status === MemberStatus.Approved}
+      {#if !member.membership || DJS(member.membership).isBefore(DJS())}
+        <form on:submit|preventDefault={setup}>
+          <fieldset disabled={loading}>
             <div class="flex flex-col gap-4">
               <div>Your membership is not active, which means you are currently not a member of NMS.</div>
               {#if member.type === MemberType.Regular}
@@ -52,13 +78,26 @@
               {/if}
               <Button type="submit" label="Start Membership" />
             </div>
-          </form>
-        {:else}
-          You are a proud member of the NMS Family 🎉
-        {/if}
+            {#if error}
+              <div class="text-red-500">{error.message}</div>
+            {/if}
+          </fieldset>
+        </form>
       {:else}
-        <div>You are not approved yet. For active members this happens manually.</div>
+        <p>You are a proud member of the NMS Family 🎉</p>
+        <p>You membership is valid until the {$formatDate(member.membership)}.</p>
+        {#if member.renew}
+          <p class="mb-4">
+            It will renew on {$formatDate(DJS(member.membership).add(1, 'day'))} by {member.contribution}€.
+          </p>
+          <Button label="Cancel membership" on:click={() => changeRenewState(false)} />
+        {:else}
+          <p class="mb-4">Your membership is cancelled, but you can renew at any time.</p>
+          <Button label="Renew membership" on:click={() => changeRenewState(true)} />
+        {/if}
       {/if}
+    {:else}
+      <div>You are not approved yet. For active members this happens manually.</div>
     {/if}
   </section>
 </section>

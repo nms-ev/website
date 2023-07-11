@@ -5,6 +5,7 @@
   import Button from '$lib/components/form/Button.svelte'
   import Country from '$lib/components/form/Country.svelte'
   import Radio from '$lib/components/form/Radio.svelte'
+  import Slider from '$lib/components/form/Slider.svelte'
   import TextInput from '$lib/components/form/TextInput.svelte'
   import { DJS, format } from '$lib/time'
   import type { PropertyStringPath } from '$lib/utils'
@@ -21,13 +22,16 @@
     email: '',
     name: '',
     birthday: '',
-    type: MemberType.Regular,
+    contribution: 20,
+    type: MemberType.Sponsor,
   }
   let error: string | null = null
   let loading: boolean = false
   let submitted: boolean = false
 
   $: parsed = memberCreate.safeParse(form)
+
+  $: if (form.type === MemberType.Regular) form.contribution = 84
 
   onMount(async () => {
     if (typeof window === 'undefined') return
@@ -64,7 +68,7 @@
 
 <Page title="join">
   <Content>
-    <p>We are honored and flattened that you want to join us!!</p>
+    <p class="mb-12">We are honored and flattened that you want to join us!!</p>
     {#if submitted}
       <p>You got mail from us 💌</p>
     {:else}
@@ -83,11 +87,17 @@
             </div>
             <p class="text-sm">
               {#if form.type === MemberType.Sponsor}
-                The minimum yearly contribution is 20€
-                <br />
                 Sponsors do not have voting rights, but want to support us financially.
+                <br />
+                The minimum yearly contribution is 20€.
+                <br />
+                <Slider class="mt-4" bind:value={form.contribution} min={20} max={420} log />
+                <br />
+                <span class="text-lg">
+                  <b>{form.contribution}€</b>
+                </span>
               {:else}
-                The yearly contribution is 84€.
+                The yearly contribution is <b>84€</b>.
                 <br />
                 Active members have voting rights and are expected to participate in the daily business of NMS
               {/if}
@@ -149,9 +159,7 @@
             {#if error}
               <p class="text-red-800">{error}</p>
             {/if}
-            <div class:opacity-20={!parsed.success}>
-              <Button type="submit" label="Register" />
-            </div>
+            <Button disabled={!parsed.success} type="submit" label="Register" />
           </div>
         </form>
       </fieldset>

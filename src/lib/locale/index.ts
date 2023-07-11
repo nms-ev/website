@@ -1,5 +1,6 @@
 import { browser } from '$app/environment'
 import { DJS } from '$lib/time'
+import type { ConfigType } from 'dayjs'
 import { addMessages, date, getLocaleFromNavigator, init } from 'svelte-i18n'
 import { derived } from 'svelte/store'
 
@@ -20,7 +21,7 @@ init({
 addMessages('en', en)
 addMessages('de', de)
 
-export const formatDate = derived(date, (date) => (d: string) => date(DJS(d).toDate(), { dateStyle: 'medium' }))
+export const formatDate = derived(date, (date) => (d: ConfigType) => date(DJS(d).toDate(), { dateStyle: 'medium' }))
 export const formatTime = (time: string) => time.slice(0, 5)
 
 export function matchLanguage(language: string, languages: string[]): number {

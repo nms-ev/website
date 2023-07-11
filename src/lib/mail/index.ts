@@ -33,10 +33,14 @@ async function sendTemplate<Component extends SvelteComponent>(
   })
 }
 
+export function sendApprovalMail(to: string, props: ComponentProps<VerifyMail>) {
+  return sendTemplate(to, 'NMS membership approved', VerifyMail, props)
+}
+
 export function sendVerifyMail(to: string, props: ComponentProps<VerifyMail>) {
-  return sendTemplate(to, 'Verify your email', VerifyMail, props)
+  return sendTemplate(to, 'Verify your NMS registration', VerifyMail, props)
 }
 
 export function sendLoginMail(to: string, props: ComponentProps<LoginMail>) {
-  return sendTemplate(to, 'Login to NMS', LoginMail, props)
+  return sendTemplate(to, 'Your NMS login', LoginMail, props)
 }
