@@ -1,13 +1,19 @@
 <script lang="ts">
+  import type { ComponentProps } from 'svelte'
   import type { HTMLInputAttributes } from 'svelte/elements'
+  import Field from './Field.svelte'
 
-  type $$Props = Omit<HTMLInputAttributes, 'value' | 'type' | 'min' | 'max'> & {
+  interface $$Props extends Omit<HTMLInputAttributes, 'value' | 'type' | 'min' | 'max'>, ComponentProps<Field> {
+    label: string
+    suffix?: string
     value: number
     min: number
     max: number
     log?: boolean
   }
 
+  export let label: string
+  export let suffix: string = ''
   export let value: number
   export let min: number
   export let max: number
@@ -26,17 +32,25 @@
   $: to(internal)
 </script>
 
-<input
-  {...$$restProps}
-  class="bg-[var(--bg-color)] px-2 py-1 rounded-none border-solid border-[0.075rem] text-base border-current w-full appearance-none outline-none {$$restProps[
-    'class'
-  ]}"
-  type="range"
-  bind:value={internal}
-  min={log ? '0' : min}
-  max={log ? '1' : max}
-  step={log ? '0.0001' : $$restProps['step']}
-/>
+<Field {label}>
+  <div
+    class="flex gap-2 bg-accent px-2 py-1 rounded-none border-solid border-[0.075rem] text-base border-current w-full appearance-none outline-none {$$restProps[
+      'class'
+    ]}"
+  >
+    <input
+      {...$$restProps}
+      class="bg-transparent flex-1"
+      type="range"
+      bind:value={internal}
+      min={log ? '0' : min}
+      max={log ? '1' : max}
+      step={log ? '0.0001' : $$restProps['step']}
+    />
+    <div class="w-0 border-r border-current" />
+    <div class="copy-md">{value + suffix}</div>
+  </div>
+</Field>
 
 <style>
   input::-moz-range-thumb,

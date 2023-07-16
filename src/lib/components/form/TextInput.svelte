@@ -16,7 +16,7 @@
   <input
     on:change
     {...inputProps}
-    class="bg-[var(--bg-color)] py-0.5 rounded-none border-solid border-b-[0.075rem] text-base border-current"
+    class="bg-accent p-2 rounded-none border-solid border-[0.075rem] copy-md border-current"
     bind:value
   />
 </Field>

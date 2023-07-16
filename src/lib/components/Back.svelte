@@ -11,6 +11,6 @@
   }
 </script>
 
-<div class="bg fixed z-10 top-20 left-1/2 -translate-x-1/2">
-  <Click class="mono p-2" on:click={go}>← back</Click>
+<div class="bg-accent fixed z-10 top-20 left-1/2 -translate-x-1/2">
+  <Click class="mono-md p-2" on:click={go}>← back</Click>
 </div>

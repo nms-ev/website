@@ -13,7 +13,7 @@
 </script>
 
 <Page title={data.t.title}>
-  <Content reader>
+  <Content>
     <RichContent html={data.t.body} />
   </Content>
   {#if date}

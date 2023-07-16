@@ -1,13 +1,4 @@
-<script lang="ts">
-  export let reader: boolean = false
-</script>
-
-<div class:reader class="px-4 mx-auto w-fit max-w-full">
+<!-- Content is a component for narrow width content like forms, pages, etc. -->
+<div class="p-4 mx-auto w-full max-w-screen-sm">
   <slot />
 </div>
-
-<style>
-  div.reader {
-    max-width: var(--content-width);
-  }
-</style>

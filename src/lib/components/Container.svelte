@@ -1,9 +1,4 @@
-<div {...$$restProps} class="mx-auto w-full">
+<!-- Center content and limit global max width -->
+<div {...$$restProps} class="mx-auto w-full max-w-screen-xl">
   <slot />
 </div>
-
-<style>
-  div {
-    max-width: var(--max-width);
-  }
-</style>

@@ -8,7 +8,7 @@
 
 <footer>
   <Container>
-    <div class="bg wrapper px-4 xl:px-0 py-2 flex">
+    <div class="bg-accent wrapper px-4 xl:px-0 py-2 flex">
       <div class="hidden sm:block flex-1">
         <a href="https://en.wikipedia.org/wiki/The_Game_(mind_game)" target="_blank" rel="noopener noreferrer">
           {$_('footer.game')}
