@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from '$lib/components/Button.svelte'
+  import CTA from '$lib/components/form/CTA.svelte'
   import Intro from '$lib/components/Intro.svelte'
   import Globe from '$lib/icons/Globe.svelte'
   import Instagram from '$lib/icons/Instagram.svelte'
@@ -29,13 +29,11 @@
   <Intro />
 </header>
 
-<hr />
-
-<div class="p-4 flex flex-col gap-4 text-xl max-w-sm m-auto">
+<div class="mt-4 p-4 flex flex-col gap-4 text-xl max-w-sm m-auto">
   {#each data.links as { href, label, icon, huge }}
     {@const iconComponent = getIcon(icon)}
     <a {href} target="_blank" rel="noopener noreferrer" class:text-4xl={huge}>
-      <Button wide>
+      <CTA wide>
         <div class="inline-flex items-center w-contents">
           {#if iconComponent}
             <svelte:component this={iconComponent} />
@@ -44,7 +42,7 @@
             {label}
           </span>
         </div>
-      </Button>
+      </CTA>
     </a>
   {/each}
 </div>
