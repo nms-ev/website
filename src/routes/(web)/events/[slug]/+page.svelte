@@ -18,7 +18,7 @@
 
 <Page title={t.title}>
   <Back to="/events" />
-  <Content reader>
+  <Content>
     <header class="flex mono">
       <div class="flex-1">
         <div>

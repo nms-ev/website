@@ -38,7 +38,7 @@
 
 <nav class="fixed z-20 top-0 left-0 w-screen">
   <Container>
-    <div class="bg wrapper text-sm px-4 xl:px-0 flex flex-nowrap items-center mx-auto pt-2 pb-1">
+    <div class="bg-accent wrapper text-sm px-4 xl:px-0 flex flex-nowrap items-center mx-auto pt-2 pb-1">
       <!-- Logo -->
       <div class="flex-1 mr-2 text-4xl">
         <a href="/">
@@ -59,7 +59,7 @@
       {#if !$mobile || open}
         <ul
           class:open
-          class="bg flex-1 flex justify-end"
+          class="bg-accent flex-1 flex justify-end"
           transition:scale={{ duration: animation.menu }}
           on:click={close}
           on:keydown={close}

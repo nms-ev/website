@@ -5,6 +5,7 @@
   import { MemberStatus, MemberType, memberUpdate } from '$lib/validators/member'
   import Button from '../form/Button.svelte'
   import Decimal from '../form/Decimal.svelte'
+  import Slider from '../form/Slider.svelte'
 
   export let member: MemberFragment
   let contribution: number = member.contribution ?? 0
@@ -48,22 +49,22 @@
 <section class="flex flex-col gap-16">
   <div>
     Welcome back,
-    <h2>{member.name}</h2>
+    <h2 class="copy-xl">{member.name}</h2>
   </div>
 
   <div>
-    <div class="text-2xl">Basics</div>
+    <div class="copy-lg">Basics</div>
     <div class="flex flex-col gap-1">
       <div>
         Your status: <span class="capitalize">{member.status}</span>
       </div>
       <div>E-Mail: {member.email}</div>
-      <div>Membership: {member.type}</div>
+      <div class="capitalize">Membership: {member.type}</div>
     </div>
   </div>
 
   <section>
-    <div class="text-2xl">Membership</div>
+    <div class="copy-lg">Membership</div>
     {#if member.status === MemberStatus.Approved}
       {#if !member.membership || DJS(member.membership).isBefore(DJS())}
         <form on:submit|preventDefault={setup}>
@@ -73,8 +74,7 @@
               {#if member.type === MemberType.Regular}
                 <div>The yearly membership is 84€</div>
               {:else}
-                Choose your yearly contribution:
-                <Decimal class="w-8" min={20} bind:value={contribution} precision={0} label="Yearly contribution (€)" />
+                <Slider label="Annual contribution" suffix="€" bind:value={contribution} min={20} max={420} log />
               {/if}
               <Button type="submit" label="Start Membership" />
             </div>

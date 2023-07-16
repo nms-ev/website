@@ -4,8 +4,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .copy-sm {
+    @apply font-copy font-light text-sm;
+  }
+  .copy-md {
+    @apply font-copy font-light text-base;
+  }
+  .copy-md-strong {
+    @apply font-copy font-medium text-base;
+  }
+  .copy-lg {
+    @apply font-copy font-light text-2xl;
+  }
+  .copy-lg-strong {
+    @apply font-copy font-medium text-2xl;
+  }
+  .copy-xl {
+    @apply font-copy font-light text-[40px];
+  }
+  .copy-xxl {
+    @apply font-copy font-light text-[96px];
+  }
+
+  .mono-md {
+    @apply font-mono font-normal text-base;
+  }
+}
+
 * {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 body {
@@ -22,7 +51,6 @@ body {
 
 :root {
   --max-width: 70rem;
-  --content-width: 30rem;
   --line-size: 0.075rem;
   --transition: all ease-in-out 200ms;
 }
@@ -51,10 +79,6 @@ a {
 p {
   text-align: justify;
   line-height: 1.5;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 img {
@@ -95,15 +119,4 @@ hr {
 
 fieldset {
   display: contents;
-}
-
-/* UTILITY */
-
-.bg {
-  background-color: var(--bg-color);
-}
-
-.mono {
-  font-family: 'FiraCode', monospace;
-  font-weight: 400;
 }

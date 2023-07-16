@@ -5,7 +5,7 @@
 
 <label class="flex flex-col w-full">
   <slot />
-  <div class="flex justify-between text-sm">
+  <div class="flex justify-between copy-sm">
     <span>{label}</span>
     {#if error}
       <span class="text-red-800">{error}</span>
