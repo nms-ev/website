@@ -27,6 +27,6 @@
   }
 </script>
 
-<Click class="mono" on:click={change}>
+<Click class="mono-md" on:click={change}>
   {value}
 </Click>

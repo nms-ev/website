@@ -78,7 +78,7 @@
               delay: animation.menu + combined.length * animation.linkDelay,
             }}
           >
-            <Click class="mono text-base sm:hidden">→ close me ←</Click>
+            <Click class="mono-md sm:hidden">→ close me ←</Click>
           </li>
         </ul>
       {/if}

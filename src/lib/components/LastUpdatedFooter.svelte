@@ -6,6 +6,6 @@
 
 <div class="mt-8" />
 <hr />
-<p class="mono text-sm text-center">
+<p class="mono-md text-sm text-center">
   Updated: {$formatDate(date)}
 </p>

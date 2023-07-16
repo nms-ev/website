@@ -15,15 +15,15 @@
   }
 </script>
 
-{#if submitted}
-  <p>You got mail from us 💌</p>
-{:else}
-  <div>Enter your e-mail to login.</div>
-  <form class="flex flex-col gap-3" on:submit|preventDefault={submit}>
-    <TextInput type="email" label="E-Mail" bind:value={email} />
-    <Button type="submit" label="Login" />
-  </form>
-  <p class="mt-4">
-    or <a href="/join">join here</a>.
-  </p>
-{/if}
+<div class="flex flex-col gap-4 copy-md">
+  {#if submitted}
+    <p>You got mail from us 💌</p>
+  {:else}
+    <div class="copy-lg">Login</div>
+    <form class="flex flex-col gap-2" on:submit|preventDefault={submit}>
+      <TextInput type="email" label="E-Mail" bind:value={email} />
+      <Button type="submit" label="Login" />
+    </form>
+    <p>or <a href="/join">join here</a>.</p>
+  {/if}
+</div>

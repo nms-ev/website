@@ -11,7 +11,7 @@
 
 <a href={`/events/${event.slug}`}>
   <div class="wrapper flex flex-col justify-center items-center p-4">
-    <div class="mono mb-6">
+    <div class="mono-md mb-6">
       <div><Icon inline name="date" /> {$formatDate(event.date)}</div>
       <div><Icon inline name="location" /> {event.location}</div>
       <div><Icon inline name="type" /> {$_(`events.types.${event.type}`)}</div>

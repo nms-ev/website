@@ -19,7 +19,7 @@
 <Page title={t.title}>
   <Back to="/events" />
   <Content>
-    <header class="flex mono">
+    <header class="flex mono-md">
       <div class="flex-1">
         <div>
           <Icon inline name="date" />

@@ -11,7 +11,7 @@
 
 <a href={`/events/${event.slug}`}>
   <div class="wrapper py-8 flex justify-center items-end">
-    <div class="details mono">
+    <div class="details mono-md">
       <div><Icon inline name="date" /> {$formatDate(event.date)}</div>
       <div><Icon inline name="location" /> {event.location}</div>
       <div><Icon inline name="type" /> {$_(`events.types.${event.type}`)}</div>

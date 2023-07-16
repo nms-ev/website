@@ -20,4 +20,8 @@
   section :global(a:hover) {
     border-width: 0.25rem;
   }
+
+  section :global(p) {
+    margin: 1rem auto;
+  }
 </style>
