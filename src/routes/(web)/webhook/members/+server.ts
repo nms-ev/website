@@ -25,10 +25,9 @@ export const POST: RequestHandler = async ({ request }) => {
       if (body.payload.status) {
         switch (member.data.status) {
           case MemberStatus.Confirmed:
-            // TODO: Filter hook
             if (member.data.type === MemberType.Sponsor) {
               // Sponsors are approved automatically
-              // await SDK.UpdateMember({ id: member.data.id, data: { status: MemberStatus.Approved } })
+              await SDK.UpdateMember({ id: member.data.id, data: { status: MemberStatus.Approved } })
             } else {
               // TODO: Notify NMS
             }
@@ -37,7 +36,8 @@ export const POST: RequestHandler = async ({ request }) => {
             const href = `${Config.origin}/members/login?token=${await LoginToken.create({
               email: member.data.email,
             })}`
-            await sendLoginMail(member.data.email, { name: member.data.name, href })
+            // TODO: Filter hook
+            // await sendLoginMail(member.data.email, { name: member.data.name, href })
             break
         }
       }
