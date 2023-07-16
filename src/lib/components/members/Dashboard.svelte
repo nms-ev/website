@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
   import type { MemberFragment } from '$lib/graphql/gen'
   import { formatDate } from '$lib/locale'
+  import { delayed } from '$lib/stores/delay'
   import { DJS } from '$lib/time'
   import { MemberStatus, MemberType, memberUpdate } from '$lib/validators/member'
   import Button from '../form/Button.svelte'
-  import Decimal from '../form/Decimal.svelte'
   import Slider from '../form/Slider.svelte'
 
   export let member: MemberFragment
-  let contribution: number = member.contribution ?? 0
+  let contribution = delayed(member.contribution ?? 0, (value) => browser && changeContribution(value))
   let error: Error | null = null
   let loading: boolean = false
 
@@ -44,24 +45,32 @@
       loading = false
     }
   }
+
+  async function changeContribution(contribution: number) {
+    try {
+      loading = true
+      const body = memberUpdate.parse({ contribution })
+      await fetch('/members/update', { method: 'POST', body: JSON.stringify(body) })
+    } finally {
+      loading = false
+    }
+  }
 </script>
 
-<section class="flex flex-col gap-16">
-  <div>
+<div class="flex flex-col gap-16">
+  <section>
     Welcome back,
     <h2 class="copy-xl">{member.name}</h2>
-  </div>
+  </section>
 
-  <div>
+  <section>
     <div class="copy-lg">Basics</div>
     <div class="flex flex-col gap-1">
-      <div>
-        Your status: <span class="capitalize">{member.status}</span>
-      </div>
+      <div>Your status: <span class="capitalize">{member.status}</span></div>
       <div>E-Mail: {member.email}</div>
-      <div class="capitalize">Membership: {member.type}</div>
+      <div class="capitalize">Type: {member.type}</div>
     </div>
-  </div>
+  </section>
 
   <section>
     <div class="copy-lg">Membership</div>
@@ -74,7 +83,7 @@
               {#if member.type === MemberType.Regular}
                 <div>The yearly membership is 84€</div>
               {:else}
-                <Slider label="Annual contribution" suffix="€" bind:value={contribution} min={20} max={420} log />
+                <Slider label="Annual contribution" suffix="€" bind:value={$contribution} min={20} max={420} log />
               {/if}
               <Button type="submit" label="Start Membership" />
             </div>
@@ -84,10 +93,12 @@
           </fieldset>
         </form>
       {:else}
-        <p>You are a proud member of the NMS Family 🎉</p>
-        <p>You membership is valid until the {$formatDate(member.membership)}.</p>
+        <p>
+          You are a proud member of the NMS Family 🎉
+          <br />You membership is valid until the {$formatDate(member.membership)}.
+        </p>
         {#if member.renew}
-          <p class="mb-4">
+          <p>
             It will renew on {$formatDate(DJS(member.membership).add(1, 'day'))} by {member.contribution}€.
           </p>
           <Button label="Cancel membership" on:click={() => changeRenewState(false)} />
@@ -100,4 +111,4 @@
       <div>You are not approved yet. For active members this happens manually.</div>
     {/if}
   </section>
-</section>
+</div>

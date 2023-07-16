@@ -8,7 +8,7 @@
   export let data: PageData
 </script>
 
-<Page title="Members">
+<Page title="Member">
   <Content>
     {#if data.member === null}
       <Login />
