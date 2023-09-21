@@ -24,7 +24,7 @@
     "@mollie/api-client": "^3.7.0",
     "country-list": "^2.3.0",
     "dayjs": "^1.11.9",
-    "graphql": "^16.7.1",
+    "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
     "jose": "^4.14.4",
